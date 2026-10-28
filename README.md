@@ -1,6 +1,6 @@
-# 🏛️ Kayseri Üniversitesi (KAYÜ) Mevzuat Danışmanı
+# Kayseri Üniversitesi (KAYÜ) Mevzuat Danışmanı (Prototip)
 
-> **Kayseri Üniversitesi Senato Yönetmelik ve Yönergeleri için Saf Python Hibrit RAG (BM25 + Vektör) Arama ve Soru-Cevap Portalı**
+> Kayseri Üniversitesi senato yönetmelik ve yönergeleri üzerinde çalışan, saf Python tabanlı hibrit arama (BM25 + Vektör) ve soru-cevap prototipi.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com/)
@@ -10,107 +10,116 @@
 
 ---
 
-## 📌 Proje Genel Bakış
-
-Üniversite öğrencileri ve akademisyenler; ders kayıtları, sınav hakları, çift anadal (ÇAP), yatay geçiş, mazeretler, devamsızlık ve yaz okulu gibi resmi prosedürlerde yüzlerce sayfadan oluşan karmaşık mevzuat metinlerini taramak durumundadır.
-
-**KAYÜ Mevzuat Danışmanı**, Kayseri Üniversitesi bünyesindeki **19 resmi senato yönetmelik ve yönergesini** indeksleyen; harici RAG çerçeveleri (*LangChain*, *LlamaIndex* vb.) kullanılmadan **saf Python** ile geliştirilmiş bir Retrieval-Augmented Generation (RAG) sistemidir.
-
-Öğrencilerin doğal dille sorduğu soruları (örneğin *"Alttan FF dersim varken yatay geçiş yapabilir miyim?"* veya *"Sınav notuma itiraz süresi kaç gün?"*), hem leksikal (**BM25**) hem de semantik (**Dense Vektör**) uzayda eşleştirerek doğrudan ilgili yönetmelik maddesinden sayfa atıflı (`[belge.pdf, s.X]`) olarak cevaplar.
+> ⚠️ **Prototip Bildirimi:** Bu proje henüz geliştirme aşamasında olan bir **akademik/öğrenci prototipidir**. Sistem yalnızca aşağıda listelenen 19 adet resmi PDF belgesini referans alarak yanıt üretir. Herhangi bir resmi bağlayıcılığı yoktur; resmi işlemlerde Kayseri Üniversitesi Öğrenci İşleri Daire Başkanlığı ve ilgili birimlerin kararları esastır.
 
 ---
 
-## 🚀 Öne Çıkan Mühendislik Özellikleri
+## 📜 Kapsamdaki 19 Resmi Belge
 
-### 1. Saf Python Mimarisi (No Heavy Frameworks)
-Piyasadaki pek çok RAG prototipinin aksine, bu projede gereksiz soyutlama katmanları (abstraction overhead) barındıran kütüphaneler yerine; metin bölme (chunking), leksikal indeksleme, embedding yönetimi ve **Reciprocal Rank Fusion (RRF)** sıralaması doğrudan saf Python ve ChromaDB ile uygulanmıştır.
+Sistem, Kayseri Üniversitesi Senatosu tarafından yayımlanan güncel 19 resmi mevzuat metnini indekslemektedir:
 
-### 2. Hibrit Arama Hattı (BM25 + Dense Vektör)
-Mevzuat belgelerinde "FF", "GANO 2.50", "3 iş günü", "20 AKTS" gibi kritik eşik ve teknik terimler yalnızca semantik vektör araması kullanıldığında kaybolabilmektedir. Leksikal BM25 ve çok dilli yoğun vektör aramasının RRF ile birleştirilmesi sayesinde arama başarısı **%84.6 Hit@3** seviyesine çıkarılmıştır.
+### Yönetmelikler (3 Belge)
+1. **Ön Lisans ve Lisans Eğitim-Öğretim ve Sınav Yönetmeliği** (12 sayfa)
+2. **Lisansüstü Eğitim ve Öğretim Yönetmeliği** (24 sayfa)
+3. **YÖK Kurum İçi ve Kurumlar Arası Yatay Geçiş, ÇAP ve Yandal Yönetmeliği** (13 sayfa)
 
-### 3. Sıfır Halüsinasyon Prensibi (Strict Grounding)
-Model yalnızca sağlanan resmi yönetmelik parçalarında açıkça yer alan bilgileri kullanır:
-- Cevapta yer alan her bilgi cümlesinin sonuna `[belge.pdf, s.X]` kaynak atfı zorunlu kılınmıştır.
-- Sorulan konu 19 resmi belgenin kapsamı dışındaysa (örn. yemekhane bursu, harici barınma koşulları) model tahmin yürütmez; ilgili bilginin mevzuatta yer almadığını açıkça belirtir.
-
-### 4. Dinamik Kaynak Filtreleme (`filter_used_sources`)
-Model yanıt ürettiğinde, arama motorunun getirdiği 4 parçanın tamamı değil; yalnızca modelin yanıt metninde **bizzat atıfta bulunduğu** resmi belgeler regex ile ayıklanarak arayüzde gösterilir. Alakasız veya kullanılmayan belgeler kullanıcıya sunulmaz.
-
----
-
-## 📊 Arama Yaklaşımları ve Deneysel Sonuçlar
-
-Sistem, 26'sı doğrudan mevzuat içi ve 6'sı kapsam dışı (abstention) olmak üzere **32 gerçekçi öğrenci sorusundan** oluşan değerlendirme veri seti (`eval/questions.json`) üzerinde test edilmiştir:
-
-| Arama Yöntemi | Hit@1 | Hit@3 | MRR | Açıklama |
-| :--- | :---: | :---: | :---: | :--- |
-| **Saf Vektör Arama** (`multilingual-e5-base`) | %50.0 | %80.8 | 0.647 | Semantik benzerlik; teknik kısaltmaları kaçırabiliyor. |
-| **Parça Başlığı Eklenmiş Vektör** | %50.0 | %80.8 | 0.631 | Genel anahtar kelimelerde yanlış yönetmeliğe kayma gözlendi. |
-| **BM25 + Vektör Hibrit (RRF k=60)** | **%65.4** | **%84.6** | **0.747** | **Öğrenci terimlerini ("ff", "gano", "itiraz") tam isabetle yakaladı.** |
-
-*Detaylı hata analizi ve deney günlüğü için [eval/sonuclar.md](eval/sonuclar.md) dosyasını inceleyebilirsiniz.*
+### Yönergeler ve Usul Esaslar (16 Belge)
+4. **Kurum İçi Yatay Geçiş, Çift Anadal (ÇAP) ve Yandal Yönergesi** (8 sayfa)
+5. **Yaz Okulu Yönergesi** (3 sayfa)
+6. **Ön Lisans ve Lisans Sınav ve Başarı Değerlendirme Yönergesi** (9 sayfa)
+7. **Ders Muafiyeti ve İntibak İşlemleri Yönergesi** (4 sayfa)
+8. **Öğrenci Haklı ve Geçerli Nedenler Yönergesi (Mazeret Esasları)** (4 sayfa)
+9. **Azami Öğrenim Süresi Sonunda Mezun Olamayanlar Yönergesi** (6 sayfa)
+10. **İşletmede Mesleki Eğitim Yönergesi** (7 sayfa)
+11. **Ön Lisans ve Lisans Düzeyinde Uygulamalı Eğitimler Yönergesi** (10 sayfa)
+12. **AKTS Kredilendirme Yönergesi** (4 sayfa)
+13. **Bologna Süreci Uyum Yönergesi** (3 sayfa)
+14. **Özel Öğrenci Yönergesi** (4 sayfa)
+15. **Yabancı Uyruklu Öğrenci Başvuru ve Kayıt Yönergesi** (7 sayfa)
+16. **Mikro Yeterlilik Yönergesi** (5 sayfa)
+17. **Yabancı Dil Muafiyet Sınavları Yönergesi** (5 sayfa)
+18. **Önceki Öğrenmelerin Tanınması Yönergesi** (3 sayfa)
+19. **Üniversite Seçmeli Dersler Yönergesi** (3 sayfa)
 
 ---
 
-## 🏗️ Mimari Şema
+## 🔍 Çalışma Mantığı ve Mimari
+
+Bu projede harici büyük çerçeveler (LangChain, LlamaIndex vb.) yerine temel arama ve birleştirme adımları saf Python ile kurgulanmıştır:
+
+- **Hibrit Arama (BM25 + Vektör):** Mevzuat dilindeki "FF", "GANO 2.50", "3 iş günü", "20 AKTS" gibi teknik ifadeleri yakalamak için leksikal (BM25) arama ile semantik yoğun vektör araması (`multilingual-e5-base`) birlikte çalıştırılır.
+- **RRF Sıralaması:** İki farklı arama motorundan gelen sonuçlar Reciprocal Rank Fusion (RRF, k=60) formülüyle tek bir sıralamada birleştirilir ve en alakalı ilk 4 parça seçilir.
+- **Kaynak Gösterme ve Sayfa Atfı:** LLM motoru (Google Gemini 3.5 Flash) yalnızca seçilen bağlamdaki resmi maddelere dayanarak cevap üretir ve her bilginin sonuna `[belge.pdf, s.X]` formatında sayfa atfı ekler. İlgili konu 19 belgede yer almıyorsa tahminde bulunmaz.
+- **Dinamik Kaynak Filtreleme:** Arayüzde sadece cevap metninde bizzat atıf yapılan resmi belge parçaları akordiyon olarak listelenir, kullanılmayan parçalar elenir.
 
 ```mermaid
 flowchart TD
-    A[Kullanıcı Sorusu] --> B[Sorgu Genişletme & Normalizasyon]
+    A[Öğrenci Sorusu] --> B[Sorgu Genişletme]
     
     B --> C[BM25 Leksikal Arama]
-    B --> D[Dense Vektör Arama / Multilingual-E5]
+    B --> D[Dense Vektör Arama]
     
-    C --> E[Reciprocal Rank Fusion k=60]
+    C --> E[RRF Birleştirme k=60]
     D --> E
     
-    E --> F[En İlgili 4 Yönetmelik Parçası]
+    E --> F[İlk 4 İlgili Parça]
+    F --> G[Google Gemini LLM]
     
-    F --> G[Google Gemini LLM Motoru]
-    G --> H{Strict Grounding Kontrolü}
-    
-    H -->|Mevzuatta Bilgi Var| I[Sayfa Referanslı Cevap Üretimi]
-    H -->|Mevzuatta Bilgi Yok| J[Kapsam Dışı Bildirimi]
-    
-    I --> K[Dinamik Kaynak Filtreleme]
-    K --> L[Kurumsal Web Portalı & Akordiyon]
+    G --> H[Sayfa Atıflı Cevap]
+    H --> I[Kullanılan Kaynak Filtresi]
+    I --> J[Web Portalı Arayüzü]
 ```
 
 ---
 
-## 💻 Kullanıcı Arayüzü Özellikleri
+## 📊 Arama Testleri ve Karşılaştırma
 
-- **Merkez Odaklı Kurumsal Tasarım:** Yan panel kargaşasından uzak, 880px ferah genişlikte sade ve okunaklı düzen.
-- **Taranan 19 Resmi Belge Modalı:** Üst menüden tek tıkla sistemin bildiği tüm senato kararlarını sayfa sayılarıyla inceleme imkanı.
-- **Tek Tıkla Kopyalama:** Cevap kartındaki "Kopyala" butonuyla yanıtı panoya aktarma.
-- **Şeffaf Akordiyon:** Her cevabın altında, dayanak alınan resmi yönetmeliğin ilgili sayfasındaki orijinal metni açıp inceleme.
+Sistem, 26'sı doğrudan mevzuat içi ve 6'sı kapsam dışı olmak üzere **32 gerçekçi soru** içeren test seti (`eval/questions.json`) üzerinde denenmiştir:
+
+| Yöntem | Hit@1 | Hit@3 | MRR | Açıklama |
+| :--- | :---: | :---: | :---: | :--- |
+| **Saf Vektör Arama** (`multilingual-e5-base`) | %50.0 | %80.8 | 0.647 | Semantik benzerlik; teknik kısaltmaları kaçırabiliyor. |
+| **Parça Başlığı Eklenmiş Vektör** | %50.0 | %80.8 | 0.631 | Genel kelimelerde yanlış yönetmeliğe kayma görüldü. |
+| **BM25 + Vektör Hibrit (RRF k=60)** | **%65.4** | **%84.6** | **0.747** | **Teknik terimleri ve kısaltmaları yakalayarak en iyi sonucu verdi.** |
+
+*Ayrıntılı test kayıtları [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*
 
 ---
 
-## 📂 Dizin Yapısı
+## 💻 Web Arayüzü
+
+- Ekranın merkezinde dengeli ve sade web portalı tasarımı (`max-width: 880px`).
+- Üst bardan açılabilen **"19 Resmi Belge İndeksi"** modal penceresi.
+- Yanıtları panoya kopyalama butonu.
+- Cevap altında dayanak alınan yönetmelik sayfasının orijinal metnini gösteren akordiyon.
+
+---
+
+## 📁 Dizin Yapısı
 
 ```
 kayu-rag/
 ├── data/
-│   ├── pdfs/                 # 19 adet resmi KAYÜ senato yönetmelik ve yönergesi
+│   ├── yonergeler/           # 16 adet yönerge PDF'i
+│   ├── yonetmelikler/        # 3 adet yönetmelik PDF'i
 │   └── envanter.csv          # PDF metin katmanı, karakter ve sayfa dökümü
-├── db/                       # ChromaDB kalıcı vektör indeksi
+├── db/                       # ChromaDB kalıcı vektör indeksi (git'e dahil edilmez)
 ├── eval/
-│   ├── questions.json        # 32 soruluk test ve değerlendirme veri seti
-│   ├── run_eval.py           # Otomatik Hit@k ve MRR benchmark scripti
-│   └── sonuclar.md           # Karşılaştırmalı deney raporu
+│   ├── questions.json        # 32 soruluk test veri seti
+│   ├── run_eval.py           # Benchmark scripti
+│   └── sonuclar.md           # Deney karşılaştırma raporu
 ├── src/
-│   ├── api.py                # FastAPI REST API ve statik dosya sunucusu
-│   ├── generate.py           # Hibrit arama, prompt şablonu ve Gemini yanıt motoru
-│   └── make_inventory.py     # PDF metin çıkarımı ve envanter denetimi
+│   ├── api.py                # FastAPI REST API ve sunucu
+│   ├── generate.py           # Hibrit arama ve Gemini yanıt motoru
+│   └── make_inventory.py     # PDF envanter denetimi
 ├── web/
-│   ├── index.html            # Kurumsal web portalı arayüzü
-│   ├── style.css             # Açık tema, kart tasarımları ve responsive stiller
-│   └── app.js                # İstemci mantığı, akordiyon ve panoya kopyalama
-├── mini_rag.py               # Çerçevesiz saf Python arama motoru
-├── requirements.txt          # Python bağımlılıkları listesi
-├── run.sh                    # Tek komutla sunucuyu başlatan kabuk scripti
-├── .env.example              # Örnek çevre değişkenleri
+│   ├── index.html            # Web arayüzü
+│   ├── style.css             # Arayüz stilleri
+│   └── app.js                # İstemci mantığı
+├── mini_rag.py               # Saf Python hibrit arama çekirdeği
+├── requirements.txt          # Python bağımlılıkları
+├── run.sh                    # Tek komutla başlatma scripti
+├── .env.example              # Çevre değişkeni örneği
 └── README.md                 # Proje dokümantasyonu
 ```
 
@@ -120,11 +129,11 @@ kayu-rag/
 
 ### Gereksinimler
 - Python 3.10 veya üzeri
-- Google Gemini API Anahtarı ([Google AI Studio](https://aistudio.google.com/)'dan ücretsiz temin edilebilir)
+- Google Gemini API Anahtarı ([Google AI Studio](https://aistudio.google.com/)'dan temin edilebilir)
 
 ### 1. Depoyu Klonlayın
 ```bash
-git clone https://github.com/kullaniciadi/kayu-rag.git
+git clone https://github.com/erimlers/kayu-rag.git
 cd kayu-rag
 ```
 
@@ -134,61 +143,36 @@ pip install -r requirements.txt
 ```
 
 ### 3. API Anahtarınızı Tanımlayın
-`.env.example` dosyasını `.env` olarak kopyalayın ve anahtarınızı ekleyin:
 ```bash
 cp .env.example .env
 ```
-`.env` içeriği:
+`.env` dosyasını açıp anahtarınızı girin:
 ```env
 GEMINI_API_KEY=AIzaSy...
 ```
 
 ### 4. Sistemi Başlatın
-Hazır başlatıcı script ile:
+Hazır script ile:
 ```bash
 chmod +x run.sh
 ./run.sh
 ```
+
 Veya doğrudan Uvicorn ile:
 ```bash
 python3 -m uvicorn src.api:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Tarayıcınızdan **`http://127.0.0.1:8000`** adresine giderek sistemi kullanabilirsiniz.
+Arayüze erişim: **`http://127.0.0.1:8000`**
 
-### 5. Değerlendirmeyi Çalıştırma (Benchmark)
-Arama hattının Hit@1, Hit@3 ve MRR metriklerini test etmek için:
+### 5. Değerlendirmeyi Çalıştırma
 ```bash
 python3 eval/run_eval.py
 ```
 
 ---
 
-## 📜 Kapsamdaki 19 Resmi Belge
-
-1. Ön Lisans ve Lisans Eğitim-Öğretim ve Sınav Yönetmeliği
-2. Lisansüstü Eğitim ve Öğretim Yönetmeliği
-3. YÖK Kurum İçi ve Kurumlar Arası Yatay Geçiş, ÇAP ve Yandal Yönetmeliği
-4. Kurum İçi Yatay Geçiş, Çift Anadal (ÇAP) ve Yandal Yönergesi
-5. Yaz Okulu Yönergesi
-6. Ön Lisans ve Lisans Sınav ve Başarı Değerlendirme Yönergesi
-7. Ders Muafiyeti ve İntibak İşlemleri Yönergesi
-8. Öğrenci Haklı ve Geçerli Nedenler Yönergesi (Mazeret Esasları)
-9. Azami Öğrenim Süresi Sonunda Mezun Olamayanlar Yönergesi
-10. İşletmede Mesleki Eğitim Yönergesi
-11. Ön Lisans ve Lisans Düzeyinde Uygulamalı Eğitimler Yönergesi
-12. AKTS Kredilendirme Yönergesi
-13. Bologna Süreci Uyum Yönergesi
-14. Özel Öğrenci Yönergesi
-15. Yabancı Uyruklu Öğrenci Başvuru ve Kayıt Yönergesi
-16. Mikro Yeterlilik Yönergesi
-17. Yabancı Dil Muafiyet Sınavları Yönergesi
-18. Önceki Öğrenmelerin Tanınması Yönergesi
-19. Üniversite Seçmeli Dersler Yönergesi
-
----
-
 ## ⚖️ Lisans
 
-Bu proje [MIT Lisansı](LICENSE) kapsamında açık kaynak olarak sunulmaktadır.
-Mevzuat metinlerinin telif hakları Kayseri Üniversitesi'ne aittir.
+Bu proje [MIT Lisansı](LICENSE) altında açık kaynak olarak paylaşılmıştır.
+Mevzuat metinlerinin tüm hakları Kayseri Üniversitesi'ne aittir.
