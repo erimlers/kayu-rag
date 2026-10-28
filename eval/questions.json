@@ -50,8 +50,14 @@
     "kategori": "sayi",
     "cevapsiz": false,
     "beklenen_dosya": "azami_sure_mezun_olamayanlar.pdf",
-    "beklenen_sayfa": 5,
-    "dogru_cevap": "İki ek sınav hakkı verilir"
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "İki ek sınav hakkı verilir",
+    "ek_kabul": [
+      {
+        "dosya": "azami_sure_mezun_olamayanlar.pdf",
+        "sayfa": 5
+      }
+    ]
   },
   {
     "id": 7,
@@ -60,7 +66,13 @@
     "cevapsiz": false,
     "beklenen_dosya": "azami_sure_mezun_olamayanlar.pdf",
     "beklenen_sayfa": 5,
-    "dogru_cevap": "Sınırsız sınav hakkı tanınır"
+    "dogru_cevap": "Sınırsız sınav hakkı tanınır",
+    "ek_kabul": [
+      {
+        "dosya": "azami_sure_mezun_olamayanlar.pdf",
+        "sayfa": 2
+      }
+    ]
   },
   {
     "id": 8,
@@ -69,7 +81,13 @@
     "cevapsiz": false,
     "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
     "beklenen_sayfa": 2,
-    "dogru_cevap": "Bütün derslerini alıp başarmış olması şartı arandığından alttan FF ders varken geçiş yapılamaz"
+    "dogru_cevap": "Bütün derslerini alıp başarmış olması şartı arandığından alttan FF ders varken geçiş yapılamaz",
+    "ek_kabul": [
+      {
+        "dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+        "sayfa": 3
+      }
+    ]
   },
   {
     "id": 9,
@@ -104,8 +122,26 @@
     "kategori": "sure",
     "cevapsiz": false,
     "beklenen_dosya": "hakli_gecerli_nedenler.pdf",
-    "beklenen_sayfa": 2,
-    "dogru_cevap": "Mazeretin bitiminden itibaren en geç beş iş günü içinde birimine teslim etmelidir"
+    "beklenen_sayfa": 1,
+    "dogru_cevap": "Mazeretin bitiminden/ortaya çıkmasından itibaren en geç beş eğitim-öğretim (iş) günü içinde birimine teslim etmelidir",
+    "ek_kabul": [
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 2
+      },
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 7
+      },
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 2
+      },
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 3
+      }
+    ]
   },
   {
     "id": 13,
@@ -176,12 +212,16 @@
     "kategori": "sart",
     "cevapsiz": false,
     "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
-    "beklenen_sayfa": 3,
-    "dogru_cevap": "Öğrencinin genel not ortalamasının en az 2,00 olması gerekir",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "İşletmede mesleki eğitim için GANO en az 1,80 (uygulamalı eğitimler yönergesinde ise 2,00) olmalıdır",
     "ek_kabul": [
       {
         "dosya": "isletmede_mesleki_egitim.pdf",
-        "sayfa": 4
+        "sayfa": 3
+      },
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 7
       }
     ]
   },
@@ -212,6 +252,14 @@
       {
         "dosya": "akts.pdf",
         "sayfa": 2
+      },
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 5
+      },
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 6
       }
     ]
   },
@@ -296,9 +344,13 @@
     "kategori": "sure",
     "cevapsiz": false,
     "beklenen_dosya": "lisansustu_egitim.pdf",
-    "beklenen_sayfa": 6,
-    "dogru_cevap": "Kredili dersleri ve seminer dersini en çok dört yarıyılda başarıyla tamamlamak zorundadır",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Tezli yüksek lisans programında ders dönemini başarıyla tamamlama azami süresi 4 yarıyıldır",
     "ek_kabul": [
+      {
+        "dosya": "lisansustu_egitim.pdf",
+        "sayfa": 6
+      },
       {
         "dosya": "lisansustu_egitim.pdf",
         "sayfa": 7
@@ -332,6 +384,10 @@
       {
         "dosya": "lisansustu_egitim.pdf",
         "sayfa": 14
+      },
+      {
+        "dosya": "lisansustu_egitim.pdf",
+        "sayfa": 15
       }
     ]
   },
@@ -341,8 +397,14 @@
     "kategori": "sart",
     "cevapsiz": false,
     "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
-    "beklenen_sayfa": 5,
-    "dogru_cevap": "Öğrencinin kayıt olduğu yıldaki merkezi yerleştirme puanının, geçmek istediği diploma programının taban puanına eşit veya yüksek olması gerekir"
+    "beklenen_sayfa": 12,
+    "dogru_cevap": "Öğrencinin kayıt olduğu yıldaki merkezi yerleştirme puanının, geçmek istediği diploma programının taban puanına eşit veya yüksek olması gerekir",
+    "ek_kabul": [
+      {
+        "dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+        "sayfa": 5
+      }
+    ]
   },
   {
     "id": 32,
@@ -379,10 +441,18 @@
     "soru": "Ara sınav vize mazeret sınavına giremeyen öğrenci için ikinci bir mazeret sınavı açılır mı?",
     "kategori": "sart",
     "cevapsiz": false,
-    "beklenen_dosya": "hakli_gecerli_nedenler.pdf",
-    "beklenen_sayfa": 2,
-    "dogru_cevap": "Mazeret sınavı için ayrıca ikinci bir mazeret sınavı açılmaz",
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 7,
+    "dogru_cevap": "Mazeret sınavları için ikinci bir mazeret sınavı yapılmaz",
     "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 2
+      },
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 2
+      },
       {
         "dosya": "hakli_gecerli_nedenler.pdf",
         "sayfa": 3
@@ -395,12 +465,16 @@
     "kategori": "sart",
     "cevapsiz": false,
     "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
-    "beklenen_sayfa": 7,
+    "beklenen_sayfa": 8,
     "dogru_cevap": "Öğrenciler genel not ortalamalarını yükseltmek amacıyla başarılı oldukları dersleri de tekrar alabilirler, son alınan not geçerlidir",
     "ek_kabul": [
       {
         "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
-        "sayfa": 8
+        "sayfa": 7
+      },
+      {
+        "dosya": "lisansustu_egitim.pdf",
+        "sayfa": 4
       }
     ]
   },

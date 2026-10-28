@@ -312,9 +312,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // İtalik metin
     safe = safe.replace(/\*(.*?)\*/g, "<em>$1</em>");
 
-    // Kaynak atıfları: [belge.pdf, s.X]
+    // Kaynak atıfları: [belge.pdf, s.X] veya çoklu [belge1.pdf, s.X; belge2.pdf, s.Y]
     safe = safe.replace(
-      /\[([a-zA-Z0-9_\-]+\.pdf(?:,\s*s\.\d+)?)\]/g,
+      /\[([a-zA-Z0-9_\-]+\.pdf[^\]]*)\]/g,
       '<span class="doc-ref-badge">[$1]</span>'
     );
 

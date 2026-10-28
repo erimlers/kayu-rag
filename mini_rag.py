@@ -90,20 +90,27 @@ def index():
     print(len(docs), "parça indekslendi")
 
 def expand_query(q: str) -> str:
-    """Öğrenci kısaltmalarını ve terimlerini mevzuat diliyle zenginleştirir."""
+    """Öğrenci kısaltmalarını ve doğal konuşma dilini mevzuat terminolojisiyle zenginleştirir."""
     expansions = [
         (r"\bgano\b", "gano genel ağırlıklı not ortalaması mezuniyet derecesi"),
         (r"\bdno\b", "dno dönem not ortalaması"),
         (r"\bçap\b", "çap çift anadal"),
         (r"\byandal\b", "yandal yan dal"),
-        (r"\bakts\b", "akts kredi"),
+        (r"\bakts\b", "akts ects kredi"),
         (r"\balttan\b", "alttan bütün derslerini alıp başarılı olmak"),
         (r"\bff\b", "ff başarısız ders bütün dersleri başarıyla tamamlamak"),
         (r"\bvize\b", "vize ara sınav"),
+        (r"\bvizeye\b", "vizeye ara sınava"),
         (r"\bfinal\b", "final dönem sonu yarıyıl sonu sınavı"),
+        (r"\bfinale\b", "finale dönem sonu yarıyıl sonu sınavına"),
         (r"\brapor\b", "rapor sağlık raporu mazeret belgesi"),
-        (r"\b3\+1\b", "3+1 mesleki eğitim"),
-        (r"\b7\+1\b", "7+1 mesleki eğitim"),
+        (r"\braporumu\b", "raporumu sağlık raporu mazeret sınavı başvurusu"),
+        (r"\bmezun\b", "mezun mezuniyet derecesi bütün derslerini başarması 2,00"),
+        (r"\bmezuniyet\b", "mezuniyet mezuniyet derecesi 2,00"),
+        (r"\bdönem dondur\w*", "dönem dondurma kayıt dondurma bir defada en çok iki yarıyıl"),
+        (r"\b3\+1\b", "3+1 işletmede mesleki eğitim"),
+        (r"\b7\+1\b", "7+1 işletmede mesleki eğitim"),
+        (r"\bstaj\b", "staj uygulamalı eğitim sigorta"),
     ]
     expanded = q
     for pattern, repl in expansions:
@@ -118,6 +125,8 @@ def search(q, k=4):
     id_to_idx = {id_: i for i, id_ in enumerate(ids)}
 
     search_q = expand_query(q)
+    q_lower = q.lower()
+    is_grad_query = any(w in q_lower for w in ["lisansüstü", "yüksek lisans", "doktora", "tez", "tezli", "tezsiz", "enstitü", "seminer"])
 
     # 1. Vektör (Dense) Arama: Doğal soru sözdizimiyle semantik temsil
     qe = get_model().encode(["query: " + q], normalize_embeddings=True).tolist()
@@ -128,12 +137,17 @@ def search(q, k=4):
     # 2. BM25 (Kelime / Sparse) Arama: Genişletilmiş anahtar kelimelerle leksikal eşleşme
     bm25_res = bm25.search(search_q, top_n=min(30, len(ids)))
 
-    # 3. Reciprocal Rank Fusion (RRF, k=30)
+    # 3. Reciprocal Rank Fusion (RRF, k=30) + Program Düzeyi Uyumu
     rrf = Counter()
     for rank, id_ in enumerate(dense_ids, 1):
         rrf[id_] += 1.0 / (30 + rank)
     for rank, (score, idx) in enumerate(bm25_res, 1):
         rrf[ids[idx]] += 1.2 / (30 + rank)
+
+    if not is_grad_query:
+        for id_ in list(rrf.keys()):
+            if metas[id_to_idx[id_]].get("file") == "lisansustu_egitim.pdf":
+                rrf[id_] *= 0.88
 
     top_ids = [id_ for id_, _ in rrf.most_common(k)]
     return [(docs[id_to_idx[id_]], metas[id_to_idx[id_]], dense_dists.get(id_, 0.20)) for id_ in top_ids]

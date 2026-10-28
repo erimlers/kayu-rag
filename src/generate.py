@@ -21,6 +21,7 @@ TEMEL İLKELER:
 1. KANIT TABANLILIK (STRICT GROUNDING):
    - Yalnızca verilen bağlamdaki resmi maddeleri ve hükümleri kullan.
    - Kendi genel bilgilerinden, tahminlerden veya diğer üniversitelerin uygulamalarından kesinlikle ekleme yapma.
+   - Bağlamda yarıyıl (dönem) bazında verilen sayısal/kredi kuralları varsa (ör. bir yarıyıl 30 AKTS), bunları doğrudan belirterek yıllık (2 yarıyıl = 60 AKTS) karşılığını da aynı maddeye dayandırarak açıklayabilirsin.
    - İlettiğin her bilginin, şartın veya sayının sonuna mutlaka ilgili kaynak etiketini ekle: [belge_adi.pdf, s.X].
 
 2. SORU KAPSAMINA SADAKAT (SCOPE ALIGNMENT):
@@ -36,33 +37,17 @@ TEMEL İLKELER:
 4. BİÇİM VE TON:
    - Tarafsız, kurumsal ve anlaşılır maddeli bir dil kullan."""
 
-def expand_query(q: str) -> str:
-    """Öğrenci kısaltmalarını ve terimlerini mevzuat diliyle zenginleştirir."""
-    expansions = [
-        (r"\bgano\b", "gano genel ağırlıklı not ortalaması mezuniyet derecesi"),
-        (r"\bdno\b", "dno dönem not ortalaması"),
-        (r"\bçap\b", "çap çift anadal"),
-        (r"\byandal\b", "yandal yan dal"),
-        (r"\bakts\b", "akts kredi"),
-        (r"\balttan\b", "alttan bütün derslerini alıp başarılı olmak"),
-        (r"\bff\b", "ff başarısız ders bütün dersleri başarıyla tamamlamak"),
-        (r"\bvize\b", "vize ara sınav"),
-        (r"\bfinal\b", "final dönem sonu yarıyıl sonu sınavı"),
-        (r"\brapor\b", "rapor sağlık raporu mazeret belgesi"),
-        (r"\b3\+1\b", "3+1 mesleki eğitim"),
-        (r"\b7\+1\b", "7+1 mesleki eğitim"),
-    ]
-    expanded = q
-    for pattern, repl in expansions:
-        expanded = re.sub(pattern, repl, expanded, flags=re.IGNORECASE)
-    return expanded
-
 def filter_used_sources(answer: str, sources: list) -> list:
     """Yalnızca Gemini yanıtında açıkça [belge.pdf, s.X] olarak atıfta bulunulan parçaları filtreler."""
-    citations = re.findall(r'\[([a-zA-Z0-9_\-]+\.pdf)(?:,\s*s\.?\s*(\d+))?\]', answer)
-    if not citations:
+    bracket_blocks = re.findall(r'\[([^\]]+\.pdf[^\]]*)\]', answer)
+    if not bracket_blocks:
         return []
     
+    citations = []
+    for block in bracket_blocks:
+        for m in re.finditer(r'([a-zA-Z0-9_\-]+\.pdf)(?:\s*,\s*s\.?\s*(\d+))?', block):
+            citations.append((m.group(1), m.group(2)))
+
     used = []
     seen = set()
     for c_file, c_page in citations:
@@ -85,9 +70,8 @@ def get_gemini_client():
     return genai.Client(api_key=api_key.strip())
 
 def generate_answer(question: str, k: int = 6) -> dict:
-    # 1. Arama sorgusunu genişletip en alakalı parçaları getir (BM25 + Vektör Hibrit)
-    search_q = expand_query(question)
-    results = search(search_q, k=k)
+    # 1. En alakalı parçaları getir (mini_rag.search içinde BM25 sorgu genişletme + Vektör Hibrit çalışır)
+    results = search(question, k=k)
     
     sources = []
     context_parts = []

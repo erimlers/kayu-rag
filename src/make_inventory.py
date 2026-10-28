@@ -23,15 +23,20 @@ def dates_in(text):
     return sorted(found)
 
 def find_date(doc):
-    text = norm(" ".join(doc[i].get_text() for i in range(min(2, len(doc)))))
-    all_dates = dates_in(text)
-    for m in re.finditer(r"resmi gazete", text):
+    first_pages = norm(" ".join(doc[i].get_text() for i in range(min(2, len(doc)))))
+    all_dates = dates_in(first_pages)
+    for m in re.finditer(r"resmi gazete", first_pages):
         near = [d for pos, d in all_dates if m.start() <= pos <= m.start() + 150]
         if near:
             return near[0], "resmi_gazete"
     if all_dates:
         return all_dates[0][1], "ilk_tarih"
-    return "2026", "varsayilan"
+    # İlk 2 sayfada tarih yoksa son sayfaları kontrol et (Senato kabul / Resmi Gazete tablosu)
+    last_pages = norm(" ".join(doc[i].get_text() for i in range(max(0, len(doc) - 2), len(doc))))
+    end_dates = dates_in(last_pages)
+    if end_dates:
+        return end_dates[-1][1], "son_sayfa_senato"
+    return "2025", "varsayilan"
 
 rows = []
 for pdf in sorted(pathlib.Path("data").rglob("*.[pP][dD][fF]")):

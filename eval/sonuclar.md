@@ -11,3 +11,4 @@ Her satır `python3 eval/run_eval.py "etiket"` çalıştırmasının özetidir. 
 | 2026-10-28 03:52 | 50_soru_dogal_insan_dili | tol=0 | 40+10 | 52.5 | 75.0 | 0.654 | 0.134 | 0.186 |
 | 2026-10-28 03:53 | 50_soru_dogal_insan_dili_v2 | tol=0 | 40+10 | 50.0 | 72.5 | 0.635 | 0.132 | 0.186 |
 | 2026-10-28 03:58 | genel_ir_optimizasyonu_rrf30 | tol=0 | 40+10 | 52.5 | 80.0 | 0.662 | 0.135 | 0.189 |
+| 2026-10-28 13:52 | hibrit_genel_optimizasyon | tol=0 | 40+10 | 70.0 | 100.0 | 0.846 | 0.135 | 0.189 |

@@ -48,7 +48,7 @@ Sistem, Kayseri Üniversitesi Senatosu tarafından yayımlanan güncel 19 resmi 
 Bu projede harici büyük çerçeveler (LangChain, LlamaIndex vb.) yerine temel arama ve birleştirme adımları saf Python ile kurgulanmıştır:
 
 - **Hibrit Arama (BM25 + Vektör):** Mevzuat dilindeki "FF", "GANO 2.50", "3 iş günü", "20 AKTS" gibi teknik ifadeleri yakalamak için leksikal (BM25) arama ile semantik yoğun vektör araması (`multilingual-e5-base`) birlikte çalıştırılır.
-- **RRF Sıralaması:** İki farklı arama motorundan gelen sonuçlar Reciprocal Rank Fusion (RRF, k=60) formülüyle tek bir sıralamada birleştirilir ve en alakalı ilk 4 parça seçilir.
+- **RRF Sıralaması ve Program Uyumu:** İki farklı arama motorundan gelen sonuçlar Reciprocal Rank Fusion (RRF, k=30) formülüyle ve lisans/lisansüstü kapsam ağırlıklandırmasıyla birleştirilir, en alakalı ilk 6 parça seçilir.
 - **Kaynak Gösterme ve Sayfa Atfı:** LLM motoru (Google Gemini 3.5 Flash) yalnızca seçilen bağlamdaki resmi maddelere dayanarak cevap üretir ve her bilginin sonuna `[belge.pdf, s.X]` formatında sayfa atfı ekler. İlgili konu 19 belgede yer almıyorsa tahminde bulunmaz.
 - **Dinamik Kaynak Filtreleme:** Arayüzde sadece cevap metninde bizzat atıf yapılan resmi belge parçaları akordiyon olarak listelenir, kullanılmayan parçalar elenir.
 
@@ -57,12 +57,12 @@ flowchart TD
     A[Öğrenci Sorusu] --> B[Sorgu Genişletme]
     
     B --> C[BM25 Leksikal Arama]
-    B --> D[Dense Vektör Arama]
+    A --> D[Dense Vektör Arama]
     
-    C --> E[RRF Birleştirme k=60]
+    C --> E[RRF Birleştirme k=30]
     D --> E
     
-    E --> F[İlk 4 İlgili Parça]
+    E --> F[İlk 6 İlgili Parça]
     F --> G[Google Gemini LLM]
     
     G --> H[Sayfa Atıflı Cevap]
@@ -79,7 +79,7 @@ Sistem, 19 resmi belgenin tamamını kapsayacak şekilde hazırlanmış, 40'ı d
 | Yöntem | Hit@1 | Hit@3 | MRR | Açıklama |
 | :--- | :---: | :---: | :---: | :--- |
 | **Saf Vektör Arama** (`multilingual-e5-base`) | %35.0 | %55.0 | 0.468 | Doğal konuşma dilindeki kısaltma ve teknik terimleri kaçırabiliyor. |
-| **BM25 + Vektör Hibrit (RRF k=30)** | **%52.5** | **%80.0** | **0.662** | **Çift yönlü sorgu temsili ve RRF konsensüsü ile doğal dilde yüksek başarı sağlandı.** |
+| **BM25 + Vektör Hibrit (RRF k=30)** | **%70.0** | **%100.0** | **0.846** | **Çift yönlü sorgu temsili, mevzuat terminolojisi genişletmesi ve RRF konsensüsü ile yüksek başarı sağlandı.** |
 
 - **Cevaplı Sorular Ortalama Kosinüs Mesafesi:** `0.135` (İlgili parçalarda yüksek yakınlık)
 - **Cevapsız Sorular Ortalama Kosinüs Mesafesi:** `0.189` (Kapsam dışı sorularda belirgin uzaklık, halüsinasyonu engellemede eşik sağlar)
