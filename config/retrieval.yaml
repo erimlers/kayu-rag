@@ -1,0 +1,25 @@
+# KAYÜ RAG Retrieval Yapılandırması (Faz 1-5)
+embedding_model: "intfloat/multilingual-e5-base"
+chunk_size_words: 170
+chunk_overlap_words: 30
+include_doc_and_article_headings: true
+page_deduplication: true
+
+bm25:
+  k1: 1.5
+  b: 0.75
+  turkish_ascii_normalization: true
+  morphological_stem5_weight: 0.45
+
+rrf:
+  k: 30
+  original_query_weight: 1.0
+  rewrite_query_weight_short: 0.75   # <= 6 kelime
+  rewrite_query_weight_long: 0.35    # > 6 kelime
+  non_grad_doc_weight: 0.85
+
+query_rewrite:
+  enabled: true
+  model: "gemini-3.5-flash-lite"
+  max_rewritten_queries: 2
+

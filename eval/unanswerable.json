@@ -1,0 +1,272 @@
+[
+  {
+    "id": "A-U01",
+    "soru": "Yemekhanede öğle yemeği kaç TL?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U02",
+    "soru": "Kayseri'de öğrenci yurtlarına başvurular ne zaman başlıyor?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U03",
+    "soru": "Mezuniyet töreni hangi tarihte yapılacak?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U04",
+    "soru": "Kütüphane hafta sonu saat kaça kadar açık?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U05",
+    "soru": "Sınav sonucuna itiraz ederken harç veya ücret ödemem gerekiyor mu?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U06",
+    "soru": "Yaz okulunda bir ders için kaç TL ödeme yapılıyor?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U07",
+    "soru": "Disiplin cezası alan öğrencinin cezası kaç yıl sonra sicilden silinir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "A-U08",
+    "soru": "Özel öğrenci olarak yurt dışındaki bir üniversiteden ders alabilir miyim?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U01",
+    "soru": "Yemekhane yemek ücreti ne kadar?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U02",
+    "soru": "Kampüse ring otobüsü kaçta kalkıyor?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U03",
+    "soru": "Bilgisayar mühendisliği bölümünün geçen yılki taban puanı kaçtı?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U04",
+    "soru": "Kayseri'de öğrenci için uygun kiralık ev nereden bulunur?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U05",
+    "soru": "Doktora tez savunması için hangi dergilerde (SCI, Scopus) makale yayımlamam gerekiyor?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U06",
+    "soru": "Tezde intihal benzerlik oranı en fazla yüzde kaç olabilir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U07",
+    "soru": "Tezsiz yüksek lisansın dönemlik ücreti kaç TL?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "B-U08",
+    "soru": "İkinci öğretime yatay geçişte ödenecek öğrenim ücreti tutarı nedir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U01",
+    "soru": "Kayseri Üniversitesi kampüs yemekhanesinde günlük öğle yemeği ücreti kaç TL ve yemek kartına internetten bakiye yüklenebiliyor mu?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U02",
+    "soru": "Üniversite kampüsündeki öğrenci otoparkına araç giriş pulu almak için nereye başvurmalıyız ve aylık otopark abonman ücreti ne kadar?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U03",
+    "soru": "Kayseri Üniversitesi öğrencileri kampüsteki eduroam kablosuz internet ağına bağlanırken kullanıcı adı ve şifre olarak ne girmelidir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U04",
+    "soru": "Yabancı uyruklu öğrenci başvurularında yatırılması gereken Başvuru Değerlendirme ve Oryantasyon Ücreti kaç TL veya kaç dolardır ve hangi bankanın IBAN numarasına yatırılır?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U05",
+    "soru": "Yabancı uyruklu öğrenci kabulünde Türkmenistan veya Suriye ulusal lise bitirme sınavları için aranan asgari taban puan kaçtır?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U06",
+    "soru": "İşletmede Mesleki Eğitim (İME) veya zorunlu staj yapan öğrencilere işletmelerin ödediği ücret net asgari ücretin yüzde kaçıdır ve her ayın kaçında banka hesabına yatırılır?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "C-U07",
+    "soru": "Kurumlar arası yatay geçiş başvurularında adaylardan kaç TL başvuru değerlendirme ücreti alınmaktadır ve bu ücret kredi kartıyla taksitli ödenebilir mi?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U01",
+    "soru": "muafiyeti geçemezsem sınavı tekrar girebilir miyim",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U02",
+    "soru": "Muafiyet sınavı sonucuna itiraz için kaç gün süre var?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U03",
+    "soru": "TOEFL'dan kaç puan alırsam B2 düzeyi sayılır?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U04",
+    "soru": "Mikro yeterlilik programının ücreti ne kadar?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U05",
+    "soru": "Üniversitenin yemekhane ücretleri ne kadar?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U06",
+    "soru": "Yurt başvurusu hangi tarihlerde yapılıyor?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": "D-U07",
+    "soru": "Rektörlük binasına otobüsle nasıl gidilir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  }
+]

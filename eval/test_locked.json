@@ -1,0 +1,892 @@
+[
+  {
+    "id": "A-T01",
+    "soru": "Derslere devam zorunluluğu yüzde kaçtır, teorik ve uygulamalı dersler için ayrı mı?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [],
+    "dogru_cevap": "Teorik derslere %70, uygulamalı derslere %80 oranında devam zorunludur."
+  },
+  {
+    "id": "A-T02",
+    "soru": "Final sınavından en az kaç puan almam gerekiyor ki başarı notum hesaplansın?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "Başarı notunun hesaplanabilmesi için yarıyıl sonu sınavından en az 50 puan alınmalıdır."
+  },
+  {
+    "id": "A-T03",
+    "soru": "Hastalandığım için ara sınava giremedim, mazeret sınavı için ne kadar sürede başvurmam lazım?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 1
+      },
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Mazeretin bitiminden itibaren 5 eğitim-öğretim günü içinde başvurulmalıdır."
+  },
+  {
+    "id": "A-T04",
+    "soru": "Kayıt dondurma hakkım en fazla kaç yarıyıl, bir seferde ne kadar dondurabilirim?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 8,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 9
+      },
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 3
+      }
+    ],
+    "dogru_cevap": "Bir defada en çok iki yarıyıl, öğrenim süresi boyunca toplam en çok dört yarıyıl kayıt dondurulabilir."
+  },
+  {
+    "id": "A-T05",
+    "soru": "Kayıt dondurmak için dönem başladıktan sonra kaç gün içinde başvuru yapmalıyım?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 1
+      },
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Yarıyılın başlangıcından itibaren 20 eğitim-öğretim günü içinde başvurulmalıdır."
+  },
+  {
+    "id": "A-T06",
+    "soru": "4 yıllık lisans programını en geç kaç yılda bitirmem gerekiyor?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "azami_sure_mezun_olamayanlar.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [
+      {
+        "dosya": "azami_sure_mezun_olamayanlar.pdf",
+        "sayfa": 1
+      },
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Öğrenim süresi dört yıl olan lisans programları azami yedi yıl içinde tamamlanmalıdır."
+  },
+  {
+    "id": "A-T07",
+    "soru": "Yaz okulu kaç hafta sürüyor ve finaller ne zaman yapılıyor?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yaz_okulu.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Yaz okulunda eğitim-öğretim süresi altı haftadır; bu süreyi izleyen hafta içinde final sınavları yapılır."
+  },
+  {
+    "id": "A-T08",
+    "soru": "Yaz okulunda bir dönemde en fazla kaç ders alabilirim?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "yaz_okulu.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Toplam 20 AKTS veya 12 ders saatini geçmemek üzere en çok dört ders alınabilir."
+  },
+  {
+    "id": "A-T09",
+    "soru": "Başka üniversitelerin yaz okulundan lisans öğrenimim boyunca toplam ne kadar ders alabilirim?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "yaz_okulu.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Lisans öğrencileri öğrenim süresi boyunca en fazla 40 AKTS veya 24 ders saati ders alabilir."
+  },
+  {
+    "id": "A-T10",
+    "soru": "Ortak seçmeli dersten lisansta en fazla kaç tane seçebilirim?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "secmeli_dersler.pdf",
+    "beklenen_sayfa": 1,
+    "ek_kabul": [
+      {
+        "dosya": "secmeli_dersler.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Lisans programlarında en çok dört ortak seçmeli ders seçilebilir (önlisansta üç)."
+  },
+  {
+    "id": "A-T11",
+    "soru": "Bir seçmeli dersin açılması için en az kaç öğrenci seçmesi gerekir, açılmazsa ne olur?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "secmeli_dersler.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "En az 10 öğrenci gerekir; altında kalan ders kapatılır ve öğrenciler danışman tarafından açılan başka bir seçmeli derse yönlendirilir."
+  },
+  {
+    "id": "A-T12",
+    "soru": "Tek ders sınavına kimler girebilir, sınav tarihi ne kadar önce duyurulur?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 7
+      }
+    ],
+    "dogru_cevap": "Mezuniyet aşamasındaki, tüm dersleri alıp devam koşulunu sağlamış ve bir dersten başarısız öğrenciler girebilir; sınav tarihi 15 gün önce ilan edilir."
+  },
+  {
+    "id": "A-T13",
+    "soru": "Bir dersten geçmek için en az hangi harf notunu almam gerekir?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "Bir dersten başarılı sayılmak için başarı notunun en az CC olması zorunludur."
+  },
+  {
+    "id": "A-T14",
+    "soru": "Özel öğrenci olarak en fazla ne kadar süre kalabilirim?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_ozel_ogrenciler.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Ön lisansta toplam bir, lisansta ise iki eğitim-öğretim yılı ile sınırlıdır."
+  },
+  {
+    "id": "A-T15",
+    "soru": "Başka üniversiteden özel öğrenci olarak ders almak için ne zamana kadar başvurmalıyım?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_ozel_ogrenciler.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_ozel_ogrenciler.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Kayıt yenileme döneminden en geç 15 gün öncesine kadar kayıtlı olunan birime başvurulmalıdır."
+  },
+  {
+    "id": "A-T16",
+    "soru": "Bir dönemde en fazla kaç kredilik ders alabilirim, ortalamam 2'nin altındaysa değişir mi?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [],
+    "dogru_cevap": "Alınan tüm derslerin toplamı yarıyıl başına en fazla 45 kredidir; genel not ortalaması 2,00'ın altındaysa en fazla 30 kredi alınabilir."
+  },
+  {
+    "id": "A-T17",
+    "soru": "Üst sınıftan ders almak için hangi şartları sağlamam gerekiyor?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [],
+    "dogru_cevap": "Genel not ortalaması 2,50'nin üzerinde olmalı, başarısız dersi bulunmamalı ve danışman onayı alınmalıdır; birinci sınıflar üst dönemlerden ders alamaz."
+  },
+  {
+    "id": "A-T18",
+    "soru": "Sınav sonucuma itiraz etmek istiyorum, ne kadar sürem var ve nasıl başvuracağım?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 10,
+    "ek_kabul": [],
+    "dogru_cevap": "Notların öğrenci bilgi sisteminde kesin ilanından itibaren beş eğitim-öğretim günü içinde yazılı olarak ilgili birime başvurulur."
+  },
+  {
+    "id": "A-T19",
+    "soru": "Mezun olmak için genel not ortalaması en az kaç olmalı, onur öğrencisi olmak için kaç gerekir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 11,
+    "ek_kabul": [],
+    "dogru_cevap": "Mezuniyet derecesi en az 2,00 olmalıdır; 3,00-3,49 onur, 3,50 ve üzeri üstün onur öğrencisidir (normal sürede mezuniyet ve disiplin cezası almamak şartıyla)."
+  },
+  {
+    "id": "A-T20",
+    "soru": "Azami süremi doldurdum, ek sınav hakkımı kullanmak için nasıl başvurmalıyım?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "azami_sure_mezun_olamayanlar.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [],
+    "dogru_cevap": "Azami süreyi tamamladığı dönemin sonunda yapılan tek ders sınavını takiben, birimlerin belirttiği tarihlerde dilekçe ile başvurulur."
+  },
+  {
+    "id": "B-T01",
+    "soru": "Tezli yüksek lisans programını bitirmek için toplam kaç AKTS almam gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 7,
+    "dogru_cevap": "En az 120 AKTS."
+  },
+  {
+    "id": "B-T02",
+    "soru": "Tezli yüksek lisansta ders döneminde en az kaç ders almam gerekiyor ve seminer dersi zorunlu mu?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 7,
+    "dogru_cevap": "En az 7 ders ve zorunlu bir seminer dersi (en az 60 AKTS)."
+  },
+  {
+    "id": "B-T03",
+    "soru": "Tezli yüksek lisansı en az ve en fazla kaç dönemde bitirebilirim?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Asgari 4 yarıyıl, azami 6 yarıyıl."
+  },
+  {
+    "id": "B-T04",
+    "soru": "Tezsiz yüksek lisans yapıyorum, kaç ders ve kaç AKTS'lik dönem projesi almam gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 11,
+    "dogru_cevap": "Ders dönemi için 60 AKTS'den az olmamak kaydıyla en az 10 ders ve 15 AKTS'lik dönem projesi dersi."
+  },
+  {
+    "id": "B-T05",
+    "soru": "Tezsiz yüksek lisansta azami öğrenim süresi ne kadar, süre dolarsa ne olur?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 12,
+    "dogru_cevap": "Azami süre 3 yarıyıl (asgari 2); üçüncü yarıyıl sonunda ders dönemi/dönem projesi tamamlanmazsa Enstitü ile ilişik kesilir."
+  },
+  {
+    "id": "B-T06",
+    "soru": "Doktora programında toplam kaç AKTS almam lazım ve ders döneminde en az kaç ders var?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 14,
+    "dogru_cevap": "En az 240 AKTS; ders döneminde en az 7 ders ve zorunlu seminer (en az 60 AKTS)."
+  },
+  {
+    "id": "B-T07",
+    "soru": "Doktorayı en fazla kaç yarıyılda bitirmem gerekiyor, ders dönemini ne kadar sürede tamamlamalıyım?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 15,
+    "dogru_cevap": "Azami öğrenim süresi 12 yarıyıl (asgari 8); ders dönemini başarıyla tamamlama azami süresi 4 yarıyıl."
+  },
+  {
+    "id": "B-T08",
+    "soru": "Doktora yeterlik sınavından geçmek için kaç puan almak gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 16,
+    "dogru_cevap": "Yazılı ve sözlü sınavların her ikisinden de 100 üzerinden en az 75."
+  },
+  {
+    "id": "B-T09",
+    "soru": "Doktora yeterlik sınavına en fazla kaç kez girebilirim ve sınavlar hangi aylarda yapılıyor?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 16,
+    "dogru_cevap": "En fazla iki kez; sınavlar yılda iki kez, Aralık ve Haziran aylarında yapılır."
+  },
+  {
+    "id": "B-T10",
+    "soru": "Tez izleme komitesi yılda kaç kez toplanıyor, rapor ne zaman verilmeli?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 17,
+    "dogru_cevap": "Haziran ve Aralık aylarında yılda iki kez; öğrenci toplantıdan en az bir ay önce komite üyelerine yazılı rapor sunar."
+  },
+  {
+    "id": "B-T11",
+    "soru": "Doktora tez savunma jürisi kaç kişiden oluşuyor, kurum dışından kaç üye olmalı?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 17,
+    "dogru_cevap": "Danışman dahil beş öğretim üyesi (üçü tez izleme komitesinden); en az ikisi kurum dışından."
+  },
+  {
+    "id": "B-T12",
+    "soru": "Doktoraya başvurmak için en az kaç ALES puanı gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 13,
+    "dogru_cevap": "Son beş yılda alınmış, başvurulan programın puan türünden en az 55 ALES puanı."
+  },
+  {
+    "id": "B-T13",
+    "soru": "Çift anadala başvurabilmek için not ortalamam kaç olmalı ve sınıf sıralamasında nerede olmam gerekiyor?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "GANO en az 3.00 (4 üzerinden) ve sınıfın en üst %20'sinde olmak."
+  },
+  {
+    "id": "B-T14",
+    "soru": "Çift anadal programına hangi yarıyıllar arasında başvurabilirim?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "Lisansta en erken 3. yarıyılın başında, en geç 5. yarıyılın başında (önlisansta en erken 2., en geç 3. yarıyılın başı)."
+  },
+  {
+    "id": "B-T15",
+    "soru": "Çift anadaldan ikinci diploma alabilmek için mezuniyet ortalamam en az kaç olmalı?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 6,
+    "dogru_cevap": "Çift anadal GANO'su 4,00 üzerinden en az 2,75; ayrıca anadal mezuniyet hakkı elde edilmiş olmalı."
+  },
+  {
+    "id": "B-T16",
+    "soru": "Yan dal programına başvurmak için GANO şartı nedir ve hangi yarıyıllarda başvurabilirim?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 6,
+    "dogru_cevap": "GANO en az 2,50 ve tüm dersleri başarmış olmak; anadal lisansın en erken 3. ve en geç 6. yarıyılının başında."
+  },
+  {
+    "id": "B-T17",
+    "soru": "Yan dal programında en az kaç ders almam gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 7,
+    "dogru_cevap": "Ortak/eş değer dersler dışında en az 6 ders ve 30 AKTS'den az olmamak."
+  },
+  {
+    "id": "B-T18",
+    "soru": "Kurum içi yatay geçiş yapmak için genel not ortalamam en az kaç olmalı?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "GANO 4 üzerinden en az 2,50 ve bütün derslerden başarılı olmak."
+  },
+  {
+    "id": "B-T19",
+    "soru": "Kurum içi yatay geçişi hangi yarıyıllarda yapabilirim, 6. dönemde başvurabilir miyim?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Lisansta 2. yarıyıldan önce ve 5. yarıyıldan sonra yatay geçiş yapılamaz (önlisansta 2.'den önce, 3.'den sonra); dolayısıyla 6. dönemde yapılamaz."
+  },
+  {
+    "id": "B-T20",
+    "soru": "Yan dalı bitirince diploma mı veriliyor, mesleki hak sağlıyor mu?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Yan dal sertifikası verilir; diploma yerine geçmez, yan dal alanında diploma hak ve yetkilerinden yararlanılamaz."
+  },
+  {
+    "id": "C-T01",
+    "soru": "Üniversiteler arası yatay geçiş yapmak istiyorum ama genel not ortalamamın 100 üzerinden en az kaç olması gerekiyor, ortalamam yetmezse YKS puanımla başvurabilir miyim?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [
+      {
+        "dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+        "sayfa": 12
+      }
+    ],
+    "dogru_cevap": "Kurumlar arası yatay geçiş için genel not ortalamasının 100 üzerinden en az 60 olması şarttır; bu şartı sağlayamayan ancak merkezi yerleştirme puanı geçmek istediği programın taban puanına eşit veya yüksek olan adaylar da başvurabilir."
+  },
+  {
+    "id": "C-T02",
+    "soru": "Açıköğretimde okuyorum, Kayseri Üniversitesi'ndeki örgün bir bölüme yatay geçiş yapabilmem için ortalamamın veya merkezi yerleştirme puanımın nasıl olması lazım?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [],
+    "dogru_cevap": "Açık ve uzaktan öğretimden örgün öğretim programlarına geçiş için genel not ortalamasının 100 üzerinden 90 veya üzeri olması ya da kayıt olduğu yıldaki merkezi yerleştirme puanının geçmek istediği programın o yılki taban puanına eşit veya yüksek olması gerekir."
+  },
+  {
+    "id": "C-T03",
+    "soru": "Yurt dışındaki bir üniversiteden Türkiye'de başarı sıralaması şartı aranan bir bölüme yatay geçiş yapmak için okuduğum üniversitenin dünya sıralamasında ilk kaçta olması gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [],
+    "dogru_cevap": "Öğrencinin yükseköğrenimine başladığı yıl kayıtlı olduğu üniversitenin YÖK tarafından esas alınan sıralama kuruluşlarının (THE, QS, ARWU, CWTS Leiden) en az üçünde ilk 400'lük dilim içerisinde yer alması gerekir."
+  },
+  {
+    "id": "C-T04",
+    "soru": "YÖK yönetmeliğine göre çift anadal programından mezun olabilmem için anadal ortalamam en az kaç olmalı ve öğrenimim boyunca ortalamam en fazla kaç kere 70'in altına düşebilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [],
+    "dogru_cevap": "Çift anadal programından mezun olabilmek için anadal genel not ortalamasının 100 üzerinden en az 70 olması gerekir; tüm çift anadal öğrenimi süresince ortalama bir defaya mahsus 65'e kadar düşebilir, ikinci kez 70'in altına düşerse ikinci anadaldan kaydı silinir."
+  },
+  {
+    "id": "C-T05",
+    "soru": "Başka bir üniversitede özel öğrenci olarak ders almak istiyorum, bu haktan öğrenimim boyunca en fazla kaç dönem yararlanabilirim ve öğrenim ücretini hangi üniversiteye öderim?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 10,
+    "ek_kabul": [],
+    "dogru_cevap": "Özel öğrencilik imkanından bir program süresince en fazla iki dönem yararlanılır ve öğrenciler öğrenim ücreti/katkı payını kayıtlı oldukları yükseköğretim kurumuna öder (vakıf üniversitesi öğrencilerinin ücretinin %80'i karşı kuruma aktarılır)."
+  },
+  {
+    "id": "C-T06",
+    "soru": "Uygulamalı eğitim veya işletmede mesleki eğitim dersinde en fazla yüzde kaç devamsızlık hakkımız var ve sağlık raporu alırsam devam zorunluluğum kalkar mı?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [
+      {
+        "dosya": "isletmede_mesleki_egitim.pdf",
+        "sayfa": 5
+      }
+    ],
+    "dogru_cevap": "Uygulamalı eğitim dersine en az %80 devam zorunludur; öğrenciler mazeret bildirip izin alarak en fazla %20 devamsızlık yapabilir. Alınan sağlık raporları devam yükümlülüğünü ortadan kaldırmaz (ancak İME'de raporla %20 aşılırsa komisyon kararıyla aşan süre kadar uzatma tanınabilir)."
+  },
+  {
+    "id": "C-T07",
+    "soru": "Staj veya uygulamalı eğitimim bittikten sonra hazırladığım uygulamalı eğitim dosyasını en geç kaç gün içinde nereye teslim etmem gerekiyor?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [],
+    "dogru_cevap": "Uygulamalı eğitim dosyası, uygulamalı eğitimin tamamlanmasını takip eden en geç 10 eğitim-öğretim günü içinde Birim Uygulamalı Eğitimler Komisyonu, bölüm/program başkanlığı veya sorumlu öğretim elemanına teslim edilmelidir."
+  },
+  {
+    "id": "C-T08",
+    "soru": "Uygulamalı eğitimler yönergesine göre işletmede mesleki eğitim (İME) dersinin başarı notu hesaplanırken işletme yetkilisinin ve sorumlu öğretim elemanının verdiği notların ağırlığı yüzde kaçtır?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 5
+      }
+    ],
+    "dogru_cevap": "Başarı notuna katkı oranı %40 olan yarıyıl içi notu işletme yetkilisi değerlendirme formuna göre belirlenir; %60 olan yarıyıl sonu notu ise sorumlu öğretim elemanı tarafından (%50'si sorumlu öğretim elemanı değerlendirme formu, %50'si uygulamalı eğitim dosyası dikkate alınarak) belirlenir."
+  },
+  {
+    "id": "C-T09",
+    "soru": "Bölümümüzde yapacağımız zorunlu staj süresi en az kaç iş günü olmalı ve stajların toplam AKTS kredisi en az ve en fazla kaç olabilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 8,
+    "ek_kabul": [],
+    "dogru_cevap": "Staj süresi 20 iş gününden az olamaz ve stajlar kapsamında hesaplanan kredi toplamda 5 AKTS kredisinden az, 10 AKTS kredisinden fazla olamaz."
+  },
+  {
+    "id": "C-T10",
+    "soru": "Stajımı veya işletmede mesleki eğitimimi yurt dışında yapmak istersem buna kim onay verir ve yurt dışı sigorta primlerimi Kayseri Üniversitesi karşılar mı?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [],
+    "dogru_cevap": "Öğrenciler Birim Uygulamalı Eğitimler Komisyonunun uygun görüşüne binaen uygulamalı eğitimlerini yurt dışında yapabilirler; ancak yurt dışında uygulamalı eğitim yapacak öğrencilerin sigorta primleri Kayseri Üniversitesi tarafından karşılanmaz."
+  },
+  {
+    "id": "C-T11",
+    "soru": "Uygulamalı eğitim sırasında iş yerinde bir iş kazası geçirirsem işletme bunu ne zaman üniversiteye ve SGK'ya bildirmek zorundadır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 9
+      }
+    ],
+    "dogru_cevap": "İşletme yetkilisi iş kazalarını aynı gün içinde öğrencinin kayıtlı olduğu yükseköğretim kurumuna ve kazadan sonraki üç iş günü içinde Sosyal Güvenlik Kurumuna (SGK) bildirmek zorundadır."
+  },
+  {
+    "id": "C-T12",
+    "soru": "İşletmede Mesleki Eğitim (İME) dersini seçmeli olarak uygulayan bir bölümde bu dersi alabilmem için genel not ortalamamın (GANO) en az kaç olması ve hangi şartları sağlamam gerekir?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 7
+      }
+    ],
+    "dogru_cevap": "İlgili dönem başı itibarıyla GANO'nun en az 1,80 olması, öğrencinin disiplin cezası almamış olması, alttan devamsız dersi olmaması ve komisyon önerisiyle Birim Yönetim Kurulunca belirlenecek diğer başarı kriterlerini sağlaması gerekir."
+  },
+  {
+    "id": "C-T13",
+    "soru": "İşletmede Mesleki Eğitim için ilan edilen iş yeri listesinden kaç tercih yapabiliyoruz ve kendi bulduğumuz bir iş yerinde İME yapmak istersek ne yapmalıyız?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [
+      {
+        "dosya": "isletmede_mesleki_egitim.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "Öğrenciler ilan edilen iş yeri listesinden 3 tercihte bulunur; kendi belirledikleri yerde İME yapmak isteyenler ise bu taleplerini belirten bir dilekçeyi ayrıca İşletmede Mesleki Eğitim Komisyonuna teslim ederek onay almak zorundadır."
+  },
+  {
+    "id": "C-T14",
+    "soru": "İşletmede Mesleki Eğitim bittiğinde iş yeri yetkilisinin doldurduğu değerlendirme formu komisyona nasıl ulaştırılır ve İME raporumu bitimden sonra en geç kaç gün içinde teslim etmeliyim?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [
+      {
+        "dosya": "isletmede_mesleki_egitim.pdf",
+        "sayfa": 6
+      }
+    ],
+    "dogru_cevap": "Değerlendirme formu iş yeri yetkilisi tarafından taahhütlü posta ile GİZLİ olarak veya kapalı ve imzalı zarf içinde elden komisyona ulaştırılır; İşletmede Mesleki Eğitim Raporu ise eğitimin bitiminden sonra en geç 7 gün içinde komisyona teslim edilmelidir."
+  },
+  {
+    "id": "C-T15",
+    "soru": "İşletmede Mesleki Eğitim uygulama esaslarına göre sorumlu öğretim elemanı bizi iş yerinde dönem boyunca en az kaç kez denetler ve iş yerinde gece vardiyasında çalışabilir miyiz?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "isletmede_mesleki_egitim.pdf",
+        "sayfa": 5
+      },
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 8
+      },
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 9
+      }
+    ],
+    "dogru_cevap": "Sorumlu öğretim elemanı, Yürütme Kurulu aksini belirtmedikçe her yarıyılda en az iki defa denetler. Öğrenciler iş yerlerinde gece vardiyası çalışmalarına katılamaz (gündüz çalıştırılması esastır)."
+  },
+  {
+    "id": "C-T16",
+    "soru": "Kayseri Üniversitesi'ne yabancı uyruklu öğrenci kontenjanından başvurmak isteyen adaylar için yaş sınırı nedir ve online başvuruda kaç tercih hakkı veriliyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+        "sayfa": 3
+      }
+    ],
+    "dogru_cevap": "Başvuru yapacak adayların 26 yaşından gün almamış olmaları gerekmektedir ve online başvuru sırasında adaylara 10 adet tercih hakkı sunulmaktadır."
+  },
+  {
+    "id": "C-T17",
+    "soru": "Yabancı uyruklu öğrenci yerleştirmelerinde lisans ve ön lisans kontenjanlarının ne kadarı TR-YÖS sınavına ayrılır, ön lisansta kontenjan dolmazsa lise diploma notuyla nasıl yerleşilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [],
+    "dogru_cevap": "Lisans kontenjanlarına asgari 2/3 oranında TR-YÖS puanı, 1/3 oranında ekteki sınav puanları ile yerleştirme yapılır. Ön lisans programlarına ekteki sınav puanları ile yerleştirme yapılır; kontenjan dolmazsa lise diploma notu asgari %50 başarı oranına sahip olanlar yerleştirilir."
+  },
+  {
+    "id": "C-T18",
+    "soru": "Yabancı uyruklu öğrenci olarak Kayseri Üniversitesi'ne kayıt yaptırdıktan sonra Türkçe hazırlık okumadan bölüme başlayabilmek için hangi seviyede Türkçe belgesi gerekir ve C1 alamazsam kaç yıl sürem var?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "Öğrenime başlayabilmek için en az C1 (Yüksek Seviye) Türkçe yeterlilik belgesi gerekir. Türkçe düzeyi C1'in altında olanlara 1 yıl izin (hazırlık süresi) ve başarısız olurlarsa 1 yıl ek süre verilir; ikinci yılın sonunda başarısız olanların üniversite ile ilişiği kesilir."
+  },
+  {
+    "id": "C-T19",
+    "soru": "Yabancı uyruklu öğrenciler ikamet tezkerelerini veya pasaportlarını kaybederlerse ya da ikamet adreslerini değiştirirlerse bu durumu ne kadar süre içinde nereye bildirmelidir?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [],
+    "dogru_cevap": "İkamet tezkeresini veya pasaportunu kaybedenler ilgili makamlara müracaat ederek 15 gün içinde yenisini almakla; öğrenim kurumunu veya ikamet adresini değiştirenler ise 48 saat içinde mahalli emniyet makamlarına bildirmekle yükümlüdür."
+  },
+  {
+    "id": "C-T20",
+    "soru": "Yabancı uyruklu öğrenci başvurularında SAT I sınavı ve ÖSYM'nin yaptığı TR-YÖS sınavı için aranan taban puan şartları ve bu sınavların geçerlilik süresi nedir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [],
+    "dogru_cevap": "SAT I sınavından en az 1000 toplam puan ve en az 500 matematik puanı, TR-YÖS sınavından ise en az 200 taban puan alınmalıdır; her iki sınavın da geçerlilik süresi 2 yıldır."
+  },
+  {
+    "id": "D-T01",
+    "soru": "Başka üniversiteden aldığım dersten muaf olabilmem için en az hangi harf notunu almış olmam gerekiyor?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "En az CC; DD veya DC şartlı başarı notları CC'ye dönüştürülür."
+  },
+  {
+    "id": "D-T02",
+    "soru": "Muafiyet ve intibak başvurusunu ders kayıt tarihinden sonra kaç gün içinde yapmam lazım?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "En geç ders kayıt tarihinden itibaren 10 eğitim-öğretim günü içinde."
+  },
+  {
+    "id": "D-T03",
+    "soru": "Muafiyet için ders içeriğimin yüzde kaç uyumlu olması gerekiyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Ders içeriği uyumu %75'in üzerinde olmalı; bu durumda %20'ye kadar eksik kredili dersler de eş değer kabul edilebilir."
+  },
+  {
+    "id": "D-T04",
+    "soru": "Muaf sayılan derslerin toplam kredisi için üst sınır var mı, lisans programında en fazla yüzde kaçı muaf olabilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Aynı düzeydeki programlarda mezuniyet kredisinin %70'ini geçemez (ön lisanstan lisansa geçenlerde %50)."
+  },
+  {
+    "id": "D-T05",
+    "soru": "Yurt dışında denkliği YÖK tarafından tanınmayan bir okuldan aldığım derslere muafiyet yapılır mı?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Hayır, YÖK tarafından denkliği tanınmayan yurtdışı kurumlardan alınan dersler için muafiyet ve intibak işlemi yapılmaz."
+  },
+  {
+    "id": "D-T06",
+    "soru": "Yaz okulunda DD aldım, başka üniversitede şartlı geçer sayılıyor. Bizim üniversitede de geçmiş sayılır mı?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Hayır, yaz okulunda alınan DD ve DC notları Kayseri Üniversitesinde başarısız sayılır."
+  },
+  {
+    "id": "D-T07",
+    "soru": "Muafiyet kararına itiraz etmek istersem kaç gün sürem var?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Muafiyet işleminin kesinleştiği tarihten itibaren en geç 5 eğitim-öğretim günü içinde ilgili birime itiraz edilir."
+  },
+  {
+    "id": "D-T08",
+    "soru": "Muafiyet talebim sonuçlanana kadar o derse devam etmem gerekir mi?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Evet, karar verilinceye kadar öğrenci derse devam etmekle yükümlüdür; karar sisteme işlendikten sonra 5 eğitim öğretim günü içinde ders ekle-sil yapmalıdır."
+  },
+  {
+    "id": "D-T09",
+    "soru": "Muafiyet sınavlarına kimler girebilir, ikinci sınıf öğrencisi başvurabilir mi?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_sinavlari.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Sadece o öğretim yılı başında kayıt yaptıran 1. sınıf öğrencileri başvurabilir; dersi daha önce alıp kalanlar ya da devamsızlıktan kalanlar başvuramaz."
+  },
+  {
+    "id": "D-T10",
+    "soru": "Muafiyet sınavından kaç puan almam gerekiyor ki dersten muaf sayılayım?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_sinavlari.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "50 ve üzeri puan alan öğrenciler muaf olur."
+  },
+  {
+    "id": "D-T11",
+    "soru": "Muafiyet sınavları yılın hangi döneminde yapılıyor?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_sinavlari.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Her eğitim-öğretim yılının başlamasından itibaren ilk dört hafta içinde yapılır."
+  },
+  {
+    "id": "D-T12",
+    "soru": "Zorunlu hazırlık sınıfı okuyan biri Yabancı Dil muafiyet sınavına girebilir mi?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_sinavlari.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Hayır, zorunlu hazırlık okuması gereken bölümlerin öğrencileri Yabancı Dil muafiyet sınavına giremez."
+  },
+  {
+    "id": "D-T13",
+    "soru": "Bir dersin AKTS kredisi nasıl hesaplanıyor, kaç saatlik çalışma 1 AKTS ediyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "akts.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Yaklaşık 30 saatlik öğrenci çalışması 1 AKTS/ECTS kredisidir; bir yarıyıl 30 AKTS'ye eşdeğerdir."
+  },
+  {
+    "id": "D-T14",
+    "soru": "Yurt dışında Erasmus ile aldığım dersler transkriptimde nasıl görünüyor?",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "akts.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Değişim programı kapsamında kurum dışından alınan dersler kendi kodları, adları ve AKTS'leri ile not çizelgesinde gösterilir."
+  },
+  {
+    "id": "D-T15",
+    "soru": "Önceki öğrenmelerin tanınması kapsamında toplamda en fazla kaç AKTS'lik ders tanınabilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "En fazla toplam 15 AKTS kredilik ders tanınabilir."
+  },
+  {
+    "id": "D-T16",
+    "soru": "İş yerinde aldığım hizmet içi eğitim kaç saat yaparsa 1 AKTS sayılıyor?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Hizmet içi eğitimin her 40 saati 1 AKTS; pratik çalışmalarla kazanılan yetkinliklerin her 60 saati 1 AKTS sayılır."
+  },
+  {
+    "id": "D-T17",
+    "soru": "Önceki öğrenmelerin tanınması için kayıt olduktan sonra kaç gün içinde başvurmam gerekir?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Yeni kayıt yaptıran öğrenci için kesin kayıt gününü takip eden on beş iş günü içinde, elektronik ortamda."
+  },
+  {
+    "id": "D-T18",
+    "soru": "Türkçe programa kayıt olurken B1 belgem varsa yabancı dil derslerinden muaf olur muyum?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Lisans programı için asgari B1 (ön lisans için A2) düzeyini gösteren belgenin aslı kayıt sürecinde teslim edilirse zorunlu yabancı dil derslerinden muaf olunur."
+  },
+  {
+    "id": "D-T19",
+    "soru": "Mikro yeterlilik programına başvurabilmek için genel not ortalamam en az kaç olmalı?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "mikro_yeterlilik.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "mikro_yeterlilik.pdf",
+        "sayfa": 3
+      }
+    ],
+    "dogru_cevap": "GANO'su 2,50 veya üzeri olan öğrenciler başvurabilir."
+  },
+  {
+    "id": "D-T20",
+    "soru": "Mikro yeterlilik programında aldığım derslerin notları GANO'ma etki eder mi?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "mikro_yeterlilik.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "Hayır, mikro yeterlilik programı derslerinden alınan notlar GANO'ya dahil edilmez."
+  }
+]

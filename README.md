@@ -47,10 +47,11 @@ Sistem, Kayseri Üniversitesi Senatosu tarafından yayımlanan güncel 19 resmi 
 
 Bu projede harici büyük çerçeveler (LangChain, LlamaIndex vb.) yerine temel arama ve birleştirme adımları saf Python ile kurgulanmıştır:
 
-- **Hibrit Arama (BM25 + Vektör):** Mevzuat dilindeki "FF", "GANO 2.50", "3 iş günü", "20 AKTS" gibi teknik ifadeleri yakalamak için leksikal (BM25) arama ile semantik yoğun vektör araması (`multilingual-e5-base`) birlikte çalıştırılır.
-- **RRF Sıralaması ve Program Uyumu:** İki farklı arama motorundan gelen sonuçlar Reciprocal Rank Fusion (RRF, k=30) formülüyle ve lisans/lisansüstü kapsam ağırlıklandırmasıyla birleştirilir, en alakalı ilk 6 parça seçilir.
-- **Kaynak Gösterme ve Sayfa Atfı:** LLM motoru (Google Gemini 3.5 Flash) yalnızca seçilen bağlamdaki resmi maddelere dayanarak cevap üretir ve her bilginin sonuna `[belge.pdf, s.X]` formatında sayfa atfı ekler. İlgili konu 19 belgede yer almıyorsa tahminde bulunmaz.
-- **Dinamik Kaynak Filtreleme:** Arayüzde sadece cevap metninde bizzat atıf yapılan resmi belge parçaları akordiyon olarak listelenir, kullanılmayan parçalar elenir.
+- **Belge ve Madde Başlıklı Parçalama (Enriched Chunking):** Her metin parçasının başına ait olduğu yönergenin/yönetmeliğin resmi adı ve sayfadaki madde başlıkları (`[Belge Adı | Konu (MADDE X)]`) otomatik olarak eklenir.
+- **Türkçe Kök/ASCII Destekli BM25 + Vektör Hibrit Arama:** Yazım hatalarına, Türkçe karakter eksikliklerine ve çekim eklerine dayanıklı morfolojik BM25 indekslemesi ile semantik yoğun vektör araması (`multilingual-e5-base`) birlikte çalıştırılır.
+- **LLM Sorgu Yeniden Yazımı (`src/query_rewrite.py`):** Öğrencilerin yazdığı tek kelimelik, devrik veya yarım bırakılmış ifadeler (*"muafiyeti geçemezsem", "ff alırsam", "tek ders"*) kural uydurmadan resmi mevzuat terminolojisine dönüştürülür ve öğrenim düzeyi (ön lisans/lisans vs. lisansüstü) tespit edilir.
+- **RRF Sıralaması ve Sayfa Tekilleştirme:** Sonuçlar Reciprocal Rank Fusion (RRF, k=30) ile birleştirilir ve aynı sayfadan gelen parçalar tekilleştirilerek en alakalı sayfalar seçilir.
+- **Kapsam Ayrımlı Yanıt ve Abstention Kontrolü:** LLM motoru farklı yönergeleri (ör. önceki öğrenmelerin tanınması ile muafiyet sınavları) birbirine karıştırmadan sayfa atfıyla (`[belge.pdf, s.X]`) yanıt üretir; kısmi bilgi varsa açıklar, yalnızca tamamen kapsam dışı konularda çekimser (abstention) kalır.
 
 ```mermaid
 flowchart TD
@@ -72,19 +73,24 @@ flowchart TD
 
 ---
 
-## 📊 Arama Testleri ve Karşılaştırma
+## 📊 Değerlendirme ve Doğruluk Analizi (Overfit'siz Benchmark)
 
-Sistem, 19 resmi belgenin tamamını kapsayacak şekilde hazırlanmış, 40'ı doğrudan mevzuat içi ve 10'u kapsam dışı olmak üzere **50 gerçekçi öğrenci sorusu** içeren test seti (`eval/questions.json`) üzerinde denenmiştir. Sorular resmi kitapçık diliyle değil, öğrencilerin doğal konuşma diliyle (*"alttan tek dersim kaldı", "yaz okulunda başka üniden ders alsam", "dönem dondurma"* vb.) hazırlanmıştır:
+Değerlendirme sürecinde veri sızıntısını (overfit) önlemek için eski geliştirme seti (`eval/dev.json`) ayrılmış; sistem çıktılarına bakılmadan 19 resmi PDF belgesinden **bağımsız ve SHA-256 ile kilitlenmiş** üç yeni değerlendirme seti oluşturulmuştur:
 
-| Yöntem | Hit@1 | Hit@3 | MRR | Açıklama |
-| :--- | :---: | :---: | :---: | :--- |
-| **Saf Vektör Arama** (`multilingual-e5-base`) | %35.0 | %55.0 | 0.468 | Doğal konuşma dilindeki kısaltma ve teknik terimleri kaçırabiliyor. |
-| **BM25 + Vektör Hibrit (RRF k=30)** | **%70.0** | **%100.0** | **0.846** | **Çift yönlü sorgu temsili, mevzuat terminolojisi genişletmesi ve RRF konsensüsü ile yüksek başarı sağlandı.** |
+1. **Kilitli Test Seti (`eval/test_locked.json`, 80 soru):** Doğal tam cümleli öğrenci soruları (geliştirme boyunca hiç açılmamış, tek seferlik final ölçüm).
+2. **Kısa / Gürültülü Stres Seti (`eval/noisy.json`, 60 soru):** Tek kelime, yarım cümle, yazım hatalı ve günlük öğrenci argosu (*"ff alırsam", "muafiyeti geçemezsem", "staj sigortası kim ödüyo"* vb.).
+3. **Cevapsız Set (`eval/unanswerable.json`, 30 soru):** 15 tamamen kapsam dışı + 15 mevzuata yakın görünüp belgelerde cevabı olmayan soru.
 
-- **Cevaplı Sorular Ortalama Kosinüs Mesafesi:** `0.135` (İlgili parçalarda yüksek yakınlık)
-- **Cevapsız Sorular Ortalama Kosinüs Mesafesi:** `0.189` (Kapsam dışı sorularda belirgin uzaklık, halüsinasyonu engellemede eşik sağlar)
+| Veri Seti | Soru Sayısı | Hit@1 (%95 GA) | Hit@3 (%95 GA) | Hit@5 | MRR | Uçtan Uca Doğru+Kısmen (LLM Hakem) | Gereksiz "Bilgi Yok" (False Abstention) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Kilitli Test Seti** (`test_locked.json`) | 80 | **%80.0** (%71.2–%88.8) | **%95.0** (%90.0–%98.8) | **%98.8** | **0.875** | **%88.8** (%81.2–%95.0) | **%0.0** (0/80) |
+| **Kısa / Gürültülü Set** (`noisy.json`) | 60 | **%61.7** (%50.0–%73.3) | **%88.3** (%80.0–%95.0) | **%95.0** | **0.740** | **%96.7** (%91.7–%100.0) | **%0.0** (0/60) |
+| **Geliştirme Seti** (`dev.json`) | 40 | **%65.0** (%50.0–%80.0) | **%95.0** (%87.5–%100.0) | **%97.5** | **0.769** | - | - |
 
-*Ayrıntılı test kayıtları ve geçmiş deneyler [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*
+- **Kapsam Dışı / Cevapsız Sorularda Doğru Çekimserlik (`unanswerable.json`, 30 soru):** **%86.7** (%95 GA: %73.3–%96.7).
+- **Sınırlılıklar:** 80 soruluk test seti orta ölçekli bir akademik benchmark olup %95 bootstrap güven aralıkları tabloda açıkça paylaşılmıştır. Sistem yalnızca 19 PDF'te yer alan genel senato mevzuatını kapsar; bölüm bazlı müfredat/dil bilgisi veya güncel idari duyurular kapsam dışıdır.
+
+*Ayrıntılı deney kayıtları ve ablation sonuçları [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*
 
 ---
 
@@ -106,13 +112,21 @@ kayu-rag/
 │   ├── yonetmelikler/        # 3 adet yönetmelik PDF'i
 │   └── envanter.csv          # PDF metin katmanı, karakter ve sayfa dökümü
 ├── db/                       # ChromaDB kalıcı vektör indeksi (git'e dahil edilmez)
+├── config/
+│   └── retrieval.yaml        # Retrieval ve RRF hiperparametreleri
 ├── eval/
-│   ├── questions.json        # 50 soruluk doğal insan dili test veri seti
-│   ├── run_eval.py           # Benchmark scripti
+│   ├── dev.json              # 50 soruluk geliştirme seti
+│   ├── test_locked.json      # 80 soruluk kilitli final test seti
+│   ├── test_locked.sha256    # Test seti bütünlük kilidi
+│   ├── noisy.json            # 60 soruluk kısa/gürültülü stres seti
+│   ├── unanswerable.json     # 30 soruluk cevapsız/kapsam dışı set
+│   ├── judge.py              # Uçtan uca LLM-Hakem değerlendirme modülü
+│   ├── run_eval.py           # Retrieval + E2E + Bootstrap GA benchmark scripti
 │   └── sonuclar.md           # Deney karşılaştırma raporu
 ├── src/
 │   ├── api.py                # FastAPI REST API ve sunucu
 │   ├── generate.py           # Hibrit arama ve Gemini yanıt motoru
+│   ├── query_rewrite.py      # LLM tabanlı sorgu yeniden yazma modülü
 │   └── make_inventory.py     # PDF envanter denetimi
 ├── web/
 │   ├── index.html            # Web arayüzü

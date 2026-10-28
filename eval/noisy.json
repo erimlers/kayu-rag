@@ -1,0 +1,656 @@
+[
+  {
+    "id": "A-N01",
+    "soru": "ff alırsam",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [],
+    "dogru_cevap": "FF harf notunun katsayısı 0,00'dır ve 'Kalır' (başarısız) sayılır."
+  },
+  {
+    "id": "A-N02",
+    "soru": "vize kaç tane oluyo",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Her derste her dönem en az bir ara sınav yapılır; sayısı birim kurulunca artırılabilir."
+  },
+  {
+    "id": "A-N03",
+    "soru": "devamsızlık sınırı",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [],
+    "dogru_cevap": "Teorik derslere %70, uygulamalı derslere %80 devam zorunludur."
+  },
+  {
+    "id": "A-N04",
+    "soru": "tek ders",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 7
+      }
+    ],
+    "dogru_cevap": "Tek ders sınavı, mezuniyet aşamasındaki ve bir dersten başarısız öğrencilere güz/bahar bütünleme sınavlarından sonra tanınan sınav hakkıdır."
+  },
+  {
+    "id": "A-N05",
+    "soru": "mazeret sınavı kaç gün",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 1
+      },
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Mazeretin bitiminden itibaren 5 eğitim-öğretim günü içinde başvurulur."
+  },
+  {
+    "id": "A-N06",
+    "soru": "bütünlemeye girmezsem notum ne olur",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 2
+      }
+    ],
+    "dogru_cevap": "Başarılı olunan dersten not yükseltmek için bütünlemeye başvurup girilmezse not sıfır sayılır; girilirse son alınan not geçerlidir."
+  },
+  {
+    "id": "A-N07",
+    "soru": "yaz okulu kac hafta",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yaz_okulu.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Yaz okulu eğitim-öğretim süresi altı haftadır."
+  },
+  {
+    "id": "A-N08",
+    "soru": "kayıt dondurma kaç dönem",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 8,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+        "sayfa": 9
+      },
+      {
+        "dosya": "hakli_gecerli_nedenler.pdf",
+        "sayfa": 3
+      }
+    ],
+    "dogru_cevap": "Bir defada en çok iki yarıyıl, toplam en çok dört yarıyıl."
+  },
+  {
+    "id": "A-N09",
+    "soru": "ders ekle sil kim onaylıyo",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [],
+    "dogru_cevap": "Ders ekle-sil tarihlerinde danışmanın onayı ile yeni ders seçilebilir veya ders bırakılabilir."
+  },
+  {
+    "id": "A-N10",
+    "soru": "sınava geç kalırsam girebilir miyim",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [],
+    "dogru_cevap": "Sınav başladıktan sonra ilk 15 dakika içinde gelenler sınava alınır, ancak ek süre verilmez."
+  },
+  {
+    "id": "A-N11",
+    "soru": "sınav kaç dk sürer",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [],
+    "dogru_cevap": "Aksi belirtilmemişse ara sınav, yarıyıl sonu ve bütünleme sınavı en fazla bir ders saati sürer."
+  },
+  {
+    "id": "A-N12",
+    "soru": "NT notu ne demek",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 10,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_sinav_basari_degerlendirme.pdf",
+        "sayfa": 5
+      }
+    ],
+    "dogru_cevap": "Devam veya uygulama şartını yerine getirmediği için başarısız olan öğrenciye verilir; ortalamada FF işlemi görür."
+  },
+  {
+    "id": "A-N13",
+    "soru": "mezuniyet gano si kac olmali",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 11,
+    "ek_kabul": [],
+    "dogru_cevap": "Mezuniyet derecesinin en az 2,00 olması gerekir."
+  },
+  {
+    "id": "A-N14",
+    "soru": "notuma itiraz süresi",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 10,
+    "ek_kabul": [],
+    "dogru_cevap": "Notların kesin ilanından itibaren beş eğitim-öğretim günü içinde yazılı itiraz edilir."
+  },
+  {
+    "id": "A-N15",
+    "soru": "seçmeli ders açılmazsa ne yapıcam",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "secmeli_dersler.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "10 öğrencinin altında seçilen seçmeli ders kapatılır; öğrenciler kayıt danışmanı tarafından açılan diğer seçmeli derslerden birine yönlendirilir."
+  },
+  {
+    "id": "B-N01",
+    "soru": "tezsiz yl kaç kredi",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 11,
+    "dogru_cevap": "En az 10 ders (60 AKTS) + 15 AKTS dönem projesi."
+  },
+  {
+    "id": "B-N02",
+    "soru": "çap şartı",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "GANO en az 3.00, sınıfın ilk %20'si, tüm dersleri başarmış olmak."
+  },
+  {
+    "id": "B-N03",
+    "soru": "yandal gano",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [
+      {
+        "dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+        "sayfa": 7
+      }
+    ],
+    "dogru_cevap": "Başvuru için en az 2,50; devam için her dönem en az 2,50."
+  },
+  {
+    "id": "B-N04",
+    "soru": "doktora yeterlik",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 16,
+    "dogru_cevap": "Yazılı ve sözlüden en az 75; en fazla 2 hak; Aralık ve Haziranda yılda iki kez."
+  },
+  {
+    "id": "B-N05",
+    "soru": "tezli yl azami süre kaç dönem",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "6 yarıyıl."
+  },
+  {
+    "id": "B-N06",
+    "soru": "doktora ales kaç lazım",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 13,
+    "dogru_cevap": "En az 55 ALES (son 5 yıl)."
+  },
+  {
+    "id": "B-N07",
+    "soru": "yatay gecis gano kac lazim",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "4 üzerinden en az 2,50."
+  },
+  {
+    "id": "B-N08",
+    "soru": "kayıt dondurma max kaç dönem",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "Bir defada en çok 2 yarıyıl, toplamda en çok 4 yarıyıl."
+  },
+  {
+    "id": "B-N09",
+    "soru": "doktora tez savunması jüri kaç kişi",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 17,
+    "dogru_cevap": "Danışman dahil 5 öğretim üyesi (danışmanın oyu yoksa 6)."
+  },
+  {
+    "id": "B-N10",
+    "soru": "lisansüstü derse devam zorunlu yüzde kaç",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "Teorik derslerin %70'i, uygulamalı derslerin %80'i."
+  },
+  {
+    "id": "B-N11",
+    "soru": "yüksek lisansta geçme notu kaç",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "Yüksek lisansta en az CC; doktora ve sanatta yeterlikte en az CB."
+  },
+  {
+    "id": "B-N12",
+    "soru": "cap mezuniyet ortalaması",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 6,
+    "dogru_cevap": "4,00 üzerinden en az 2,75."
+  },
+  {
+    "id": "B-N13",
+    "soru": "bütünleşik doktora kaç akts",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 15,
+    "dogru_cevap": "En az 300 AKTS (ders döneminde en az 14 ders, 120 AKTS)."
+  },
+  {
+    "id": "B-N14",
+    "soru": "yan dal sertifikası diploma yerine geçiyo mu",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Hayır, diploma yerine geçmez; sadece başarı belgesi/sertifika."
+  },
+  {
+    "id": "B-N15",
+    "soru": "tezliden tezsize geçiş ne zamana kadar",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 10,
+    "dogru_cevap": "Ders döneminin en geç ikinci yarıyılının sonuna kadar, bir kez."
+  },
+  {
+    "id": "C-N01",
+    "soru": "staj sigortası kim ödüyo",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 8,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 7
+      },
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 9
+      },
+      {
+        "dosya": "isletmede_mesleki_egitim.pdf",
+        "sayfa": 5
+      }
+    ],
+    "dogru_cevap": "Staj ve işletmede mesleki eğitim yapan öğrencilere 5510 sayılı Kanun uyarınca iş kazası ve meslek hastalığı sigortası (ve bakmakla yükümlü olunmayanlara genel sağlık sigortası) yapılır ve primler üniversite tarafından karşılanır."
+  },
+  {
+    "id": "C-N02",
+    "soru": "ek madde 1 yatay gecis hazırlık sınıfı",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 12,
+    "ek_kabul": [],
+    "dogru_cevap": "Ek Madde 1 kapsamında öğrencinin kayıt olduğu yıldaki merkezi yerleştirme puanı geçmek istediği diploma programının taban puanına eşit veya yüksekse, hazırlık sınıfı da dahil olmak üzere yatay geçiş başvurusu yapabilir."
+  },
+  {
+    "id": "C-N03",
+    "soru": "yabancı öğrenci başvuru belgeleri neler",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Online başvuruda sınav sonuç belgesi (TR-YÖS veya ekteki sınavlar), Türkçe çevirili onaylı lise diploması (veya son sınıf belgesi), onaylı resmi transkript ve Türkçe çevirisi, pasaport fotokopisi ve başvuru değerlendirme/oryantasyon ücreti dekontu gerekir."
+  },
+  {
+    "id": "C-N04",
+    "soru": "ime gano şartı kaç",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 7
+      }
+    ],
+    "dogru_cevap": "İşletmede Mesleki Eğitim (İME) dersini alabilmek için ilgili dönem başı itibarıyla Genel Ağırlıklı Not Ortalamasının (GANO) en az 1,80 olması gerekir."
+  },
+  {
+    "id": "C-N05",
+    "soru": "ikinci öğretimden birinci öğretime geçiş yüzde 10",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [],
+    "dogru_cevap": "İkinci öğretim diploma programlarından başarı bakımından bulunduğu sınıfın ilk yüzde onuna (%10) girerek bir üst sınıfa geçen öğrenciler birinci öğretim diploma programlarına kontenjan dahilinde yatay geçiş yapabilirler."
+  },
+  {
+    "id": "C-N06",
+    "soru": "stajdan vazgeçme işletme değiştirme kaç gün",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [],
+    "dogru_cevap": "Öğrencinin işletmede mesleki eğitimden veya stajdan vazgeçmesi ya da işletme değişikliği talebinde bulunması halinde 3 iş günü içerisinde ilgili bölüm/program başkanlığına bilgi verilmesi zorunludur."
+  },
+  {
+    "id": "C-N07",
+    "soru": "uygulamalı ders ücreti ve sigorta var mı",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 8,
+    "ek_kabul": [],
+    "dogru_cevap": "Uygulamalı ders kapsamında uygulamalı eğitim yapan öğrencilere ücret ödenmez ve bu öğrenciler 5510 sayılı Kanunun 6'ncı maddesinin birinci fıkrasının (f) bendi kapsamında sigortalı sayılmazlar."
+  },
+  {
+    "id": "C-N08",
+    "soru": "ime not itiraz süresi",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [
+      {
+        "dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+        "sayfa": 6
+      }
+    ],
+    "dogru_cevap": "İME Uygulama Esaslarına göre sonuçların ilanını takip eden 1 hafta içinde Komisyona, Uygulamalı Eğitimler Yönergesine göre ise 5 eğitim-öğretim günü içinde ilgili birime Not İtiraz Formu ile itiraz edilebilir."
+  },
+  {
+    "id": "C-N09",
+    "soru": "çap başvuru dönemleri lisans",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 8,
+    "ek_kabul": [],
+    "dogru_cevap": "İkinci anadal (ÇAP) diploma programına anadal lisans programında en erken 3. yarıyılın başında; en geç ise dört yıllık programlarda 5., beş yıllıkta 7., altı yıllıkta 9. yarıyılın başında başvurulabilir (önlisansta en erken 2., en geç 3. yarıyıl başı)."
+  },
+  {
+    "id": "C-N10",
+    "soru": "yandal ek süre kaç dönem",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 10,
+    "ek_kabul": [],
+    "dogru_cevap": "Anadal programından mezuniyet hakkını elde eden ancak yandal programını bitiremeyen öğrencilere ilgili yönetim kurullarının kararı ile en fazla iki yarıyıl ek süre tanınır."
+  },
+  {
+    "id": "C-N11",
+    "soru": "kayıt donduran yatay gecis yapabilirmi",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [],
+    "dogru_cevap": "Evet, kayıt dondurmuş olmak yatay geçiş hakkından yararlanmak için engel teşkil etmez."
+  },
+  {
+    "id": "C-N12",
+    "soru": "yabanci uyruklu kayit sildirirse ucret iadesi",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [],
+    "dogru_cevap": "Üniversiteye kayıt yaptırıp kendi isteği ile kaydını sildiren yabancı uyruklu öğrencilerin katkı payı ve öğrenim ücretleri geri ödenmez (başvuru ücreti de iade edilmez)."
+  },
+  {
+    "id": "C-N13",
+    "soru": "azerbaycan tqdk ve kazakistan ubt taban puan",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_yabanci_uyruklu_basvuru.pdf",
+    "beklenen_sayfa": 6,
+    "ek_kabul": [],
+    "dogru_cevap": "Azerbaycan Üniversite Giriş Sınavı'ndan (TQDK) en az 350/700 puan (2 yıl geçerli), Kazakistan ENT veya UBT sınavından ise en az 70/140 puan (yapıldığı yıl geçerli) alınması gerekir."
+  },
+  {
+    "id": "C-N14",
+    "soru": "ime kabul formu kaç nüsha",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [],
+    "dogru_cevap": "Kabul formu üç nüsha olarak düzenlenir; bir nüshası işletmeye, bir nüshası Birim Uygulamalı Eğitimler Komisyonuna ve son nüshası öğrenciye verilir."
+  },
+  {
+    "id": "C-N15",
+    "soru": "stajda grev veya yürüyüş yapmak",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "isletmede_mesleki_egitim.pdf",
+        "sayfa": 5
+      }
+    ],
+    "dogru_cevap": "Uygulamalı eğitim veya İşletmede Mesleki Eğitim yapan öğrenciler grev, gösteri, yürüyüş veya iş yavaşlatma eyleminde bulunamazlar ve sendikal faaliyetlere katılamazlar; aykırı davrananların eğitimi başarısız sayılır ve 2547 sayılı Kanunun 54. maddesi uyarınca disiplin işlemi yürütülür."
+  },
+  {
+    "id": "D-N01",
+    "soru": "muafiyet sınavı ne zaman",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_sinavlari.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Her eğitim-öğretim yılının ilk dört haftası içinde."
+  },
+  {
+    "id": "D-N02",
+    "soru": "intibak nedir",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 1,
+    "dogru_cevap": "Üniversiteye kayıt hakkı kazanan öğrencilerin daha önce başardığı veya muaf sayıldığı derslere göre devam edecekleri yarıyılı belirleme işlemidir."
+  },
+  {
+    "id": "D-N03",
+    "soru": "akts nedir",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "akts.pdf",
+    "beklenen_sayfa": 1,
+    "ek_kabul": [
+      {
+        "dosya": "bologna_sureci.pdf",
+        "sayfa": 1
+      }
+    ],
+    "dogru_cevap": "Öğrencinin bir dersi başarıyla tamamlamak için gereken iş yükünü (ders, uygulama, bireysel çalışma, sınav, ödev vb.) ifade eden sayısal değerdir."
+  },
+  {
+    "id": "D-N04",
+    "soru": "sertifika tanıma",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Akredite/tanınmış kuruluşlardan alınan sertifikalardan hangilerinin değerlendirileceğine Senato karar verir; program kazanımlarıyla örtüşmesi gerekir."
+  },
+  {
+    "id": "D-N05",
+    "soru": "1 akts kac saat",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "akts.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [
+      {
+        "dosya": "mikro_yeterlilik.pdf",
+        "sayfa": 1
+      }
+    ],
+    "dogru_cevap": "Yaklaşık 30 saatlik öğrenci çalışması 1 AKTS'dir (mikro yeterlilikte 25 saat)."
+  },
+  {
+    "id": "D-N06",
+    "soru": "muafiyet başvurusu kaç gün",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Ders kayıt tarihinden itibaren 10 eğitim-öğretim günü içinde."
+  },
+  {
+    "id": "D-N07",
+    "soru": "muaf olmak icin not kac olmali",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "En az CC (DD/DC şartlı notlar CC'ye dönüştürülür)."
+  },
+  {
+    "id": "D-N08",
+    "soru": "ecdl sertifikası muafiyet",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "ECDL Temel Düzey sertifikalı ön lisans öğrencileri, İleri Düzey sertifikalı lisans öğrencileri başvuru süresinde onaylı sertifikayla uyumlu dersten muaf edilir."
+  },
+  {
+    "id": "D-N09",
+    "soru": "mikro yeterlilik kaç tane alabilirim",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "mikro_yeterlilik.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "Ön lisans öğrencileri en fazla iki, lisans öğrencileri en fazla dört mikro yeterlilik programına başvurabilir."
+  },
+  {
+    "id": "D-N10",
+    "soru": "MYP dersi açılması için min öğrenci",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "mikro_yeterlilik.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "MYP kodlu derslerin açılması için en az on öğrenci tarafından seçilmesi zorunludur."
+  },
+  {
+    "id": "D-N11",
+    "soru": "kanıt dosyası nedir ne kadar sürede",
+    "kategori": "prosedur",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "İş yeri deneyimlerinin tanınması için önceden kapsamı belirlenmiş dosya hazırlanır; muafiyet takviminde belirtilen süre tanınır, en az iki ara rapor sunulur ve İntibak Komisyonu mülakatı yapılır."
+  },
+  {
+    "id": "D-N12",
+    "soru": "açıkögretimden aldıgım derse muafiyet olurmu",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Açık öğretim ve uzaktan eğitim derslerinden sadece ortak seçmeli ve ortak zorunlu derslerde muafiyet yapılır."
+  },
+  {
+    "id": "D-N13",
+    "soru": "ön lisanstan lisansa geçince hangi sınıf dersleri muaf",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "Ön lisans programlarından alınan derslerin muafiyeti sadece 1. ve 2. sınıf derslerine yapılabilir."
+  },
+  {
+    "id": "D-N14",
+    "soru": "yabancı dil muafiyet sınavı hazırlıktakiler girer mi",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_sinavlari.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Girmez; zorunlu hazırlık okuyan öğrenciler Yabancı Dil muafiyet sınavına giremez."
+  },
+  {
+    "id": "D-N15",
+    "soru": "tanınan derse GT notu ortalamaya girer mi",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "onceki_ogrenmelerin_taninmasi.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "GT notlu dersler krediden sayılır fakat ağırlıklı ortalamaya katılmaz."
+  }
+]
