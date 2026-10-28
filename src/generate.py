@@ -46,6 +46,11 @@ def expand_query(q: str) -> str:
         (r"\bakts\b", "akts kredi"),
         (r"\balttan\b", "alttan bütün derslerini alıp başarılı olmak"),
         (r"\bff\b", "ff başarısız ders bütün dersleri başarıyla tamamlamak"),
+        (r"\bvize\b", "vize ara sınav"),
+        (r"\bfinal\b", "final dönem sonu yarıyıl sonu sınavı"),
+        (r"\brapor\b", "rapor sağlık raporu mazeret belgesi"),
+        (r"\b3\+1\b", "3+1 mesleki eğitim"),
+        (r"\b7\+1\b", "7+1 mesleki eğitim"),
     ]
     expanded = q
     for pattern, repl in expansions:

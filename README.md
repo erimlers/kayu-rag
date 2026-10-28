@@ -74,15 +74,17 @@ flowchart TD
 
 ## 📊 Arama Testleri ve Karşılaştırma
 
-Sistem, 26'sı doğrudan mevzuat içi ve 6'sı kapsam dışı olmak üzere **32 gerçekçi soru** içeren test seti (`eval/questions.json`) üzerinde denenmiştir:
+Sistem, 19 resmi belgenin tamamını kapsayacak şekilde hazırlanmış, 40'ı doğrudan mevzuat içi ve 10'u kapsam dışı olmak üzere **50 gerçekçi öğrenci sorusu** içeren test seti (`eval/questions.json`) üzerinde denenmiştir. Sorular resmi kitapçık diliyle değil, öğrencilerin doğal konuşma diliyle (*"alttan tek dersim kaldı", "yaz okulunda başka üniden ders alsam", "dönem dondurma"* vb.) hazırlanmıştır:
 
 | Yöntem | Hit@1 | Hit@3 | MRR | Açıklama |
 | :--- | :---: | :---: | :---: | :--- |
-| **Saf Vektör Arama** (`multilingual-e5-base`) | %50.0 | %80.8 | 0.647 | Semantik benzerlik; teknik kısaltmaları kaçırabiliyor. |
-| **Parça Başlığı Eklenmiş Vektör** | %50.0 | %80.8 | 0.631 | Genel kelimelerde yanlış yönetmeliğe kayma görüldü. |
-| **BM25 + Vektör Hibrit (RRF k=60)** | **%65.4** | **%84.6** | **0.747** | **Teknik terimleri ve kısaltmaları yakalayarak en iyi sonucu verdi.** |
+| **Saf Vektör Arama** (`multilingual-e5-base`) | %35.0 | %55.0 | 0.468 | Doğal konuşma dilindeki kısaltma ve teknik terimleri kaçırabiliyor. |
+| **BM25 + Vektör Hibrit (RRF k=60)** | **%50.0** | **%72.5** | **0.635** | **Öğrenci terimlerini ("ff", "gano", "vize", "3+1") leksikal katmanda yakalayarak başarıyı belirgin artırdı.** |
 
-*Ayrıntılı test kayıtları [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*
+- **Cevaplı Sorular Ortalama Kosinüs Mesafesi:** `0.132` (İlgili parçalarda yüksek yakınlık)
+- **Cevapsız Sorular Ortalama Kosinüs Mesafesi:** `0.186` (Kapsam dışı sorularda belirgin uzaklık, halüsinasyonu engellemede eşik sağlar)
+
+*Ayrıntılı test kayıtları ve geçmiş deneyler [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*
 
 ---
 
@@ -105,7 +107,7 @@ kayu-rag/
 │   └── envanter.csv          # PDF metin katmanı, karakter ve sayfa dökümü
 ├── db/                       # ChromaDB kalıcı vektör indeksi (git'e dahil edilmez)
 ├── eval/
-│   ├── questions.json        # 32 soruluk test veri seti
+│   ├── questions.json        # 50 soruluk doğal insan dili test veri seti
 │   ├── run_eval.py           # Benchmark scripti
 │   └── sonuclar.md           # Deney karşılaştırma raporu
 ├── src/

@@ -89,6 +89,27 @@ def index():
     col.add(ids=ids, documents=docs, metadatas=metas, embeddings=emb)
     print(len(docs), "parça indekslendi")
 
+def expand_query(q: str) -> str:
+    """Öğrenci kısaltmalarını ve terimlerini mevzuat diliyle zenginleştirir."""
+    expansions = [
+        (r"\bgano\b", "gano genel ağırlıklı not ortalaması mezuniyet derecesi"),
+        (r"\bdno\b", "dno dönem not ortalaması"),
+        (r"\bçap\b", "çap çift anadal"),
+        (r"\byandal\b", "yandal yan dal"),
+        (r"\bakts\b", "akts kredi"),
+        (r"\balttan\b", "alttan bütün derslerini alıp başarılı olmak"),
+        (r"\bff\b", "ff başarısız ders bütün dersleri başarıyla tamamlamak"),
+        (r"\bvize\b", "vize ara sınav"),
+        (r"\bfinal\b", "final dönem sonu yarıyıl sonu sınavı"),
+        (r"\brapor\b", "rapor sağlık raporu mazeret belgesi"),
+        (r"\b3\+1\b", "3+1 mesleki eğitim"),
+        (r"\b7\+1\b", "7+1 mesleki eğitim"),
+    ]
+    expanded = q
+    for pattern, repl in expansions:
+        expanded = re.sub(pattern, repl, expanded, flags=re.IGNORECASE)
+    return expanded
+
 def search(q, k=4):
     bm25, corpus_data = get_bm25()
     docs = corpus_data["documents"]
@@ -96,14 +117,16 @@ def search(q, k=4):
     ids = corpus_data["ids"]
     id_to_idx = {id_: i for i, id_ in enumerate(ids)}
 
+    search_q = expand_query(q)
+
     # 1. Vektör (Dense) Arama
-    qe = get_model().encode(["query: " + q], normalize_embeddings=True).tolist()
+    qe = get_model().encode(["query: " + search_q], normalize_embeddings=True).tolist()
     r = get_col().query(query_embeddings=qe, n_results=min(20, len(ids)))
     dense_ids = r["ids"][0]
     dense_dists = {id_: r["distances"][0][idx] for idx, id_ in enumerate(dense_ids)}
 
     # 2. BM25 (Kelime / Sparse) Arama
-    bm25_res = bm25.search(q, top_n=min(20, len(ids)))
+    bm25_res = bm25.search(search_q, top_n=min(20, len(ids)))
 
     # 3. Reciprocal Rank Fusion (RRF, k=60)
     rrf = Counter()
