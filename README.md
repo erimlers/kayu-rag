@@ -79,10 +79,10 @@ Sistem, 19 resmi belgenin tamamını kapsayacak şekilde hazırlanmış, 40'ı d
 | Yöntem | Hit@1 | Hit@3 | MRR | Açıklama |
 | :--- | :---: | :---: | :---: | :--- |
 | **Saf Vektör Arama** (`multilingual-e5-base`) | %35.0 | %55.0 | 0.468 | Doğal konuşma dilindeki kısaltma ve teknik terimleri kaçırabiliyor. |
-| **BM25 + Vektör Hibrit (RRF k=60)** | **%50.0** | **%72.5** | **0.635** | **Öğrenci terimlerini ("ff", "gano", "vize", "3+1") leksikal katmanda yakalayarak başarıyı belirgin artırdı.** |
+| **BM25 + Vektör Hibrit (RRF k=30)** | **%52.5** | **%80.0** | **0.662** | **Çift yönlü sorgu temsili ve RRF konsensüsü ile doğal dilde yüksek başarı sağlandı.** |
 
-- **Cevaplı Sorular Ortalama Kosinüs Mesafesi:** `0.132` (İlgili parçalarda yüksek yakınlık)
-- **Cevapsız Sorular Ortalama Kosinüs Mesafesi:** `0.186` (Kapsam dışı sorularda belirgin uzaklık, halüsinasyonu engellemede eşik sağlar)
+- **Cevaplı Sorular Ortalama Kosinüs Mesafesi:** `0.135` (İlgili parçalarda yüksek yakınlık)
+- **Cevapsız Sorular Ortalama Kosinüs Mesafesi:** `0.189` (Kapsam dışı sorularda belirgin uzaklık, halüsinasyonu engellemede eşik sağlar)
 
 *Ayrıntılı test kayıtları ve geçmiş deneyler [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*
 

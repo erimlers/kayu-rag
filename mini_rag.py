@@ -119,21 +119,21 @@ def search(q, k=4):
 
     search_q = expand_query(q)
 
-    # 1. Vektör (Dense) Arama
-    qe = get_model().encode(["query: " + search_q], normalize_embeddings=True).tolist()
-    r = get_col().query(query_embeddings=qe, n_results=min(20, len(ids)))
+    # 1. Vektör (Dense) Arama: Doğal soru sözdizimiyle semantik temsil
+    qe = get_model().encode(["query: " + q], normalize_embeddings=True).tolist()
+    r = get_col().query(query_embeddings=qe, n_results=min(30, len(ids)))
     dense_ids = r["ids"][0]
     dense_dists = {id_: r["distances"][0][idx] for idx, id_ in enumerate(dense_ids)}
 
-    # 2. BM25 (Kelime / Sparse) Arama
-    bm25_res = bm25.search(search_q, top_n=min(20, len(ids)))
+    # 2. BM25 (Kelime / Sparse) Arama: Genişletilmiş anahtar kelimelerle leksikal eşleşme
+    bm25_res = bm25.search(search_q, top_n=min(30, len(ids)))
 
-    # 3. Reciprocal Rank Fusion (RRF, k=60)
+    # 3. Reciprocal Rank Fusion (RRF, k=30)
     rrf = Counter()
     for rank, id_ in enumerate(dense_ids, 1):
-        rrf[id_] += 1.0 / (60 + rank)
+        rrf[id_] += 1.0 / (30 + rank)
     for rank, (score, idx) in enumerate(bm25_res, 1):
-        rrf[ids[idx]] += 1.0 / (60 + rank)
+        rrf[ids[idx]] += 1.2 / (30 + rank)
 
     top_ids = [id_ for id_, _ in rrf.most_common(k)]
     return [(docs[id_to_idx[id_]], metas[id_to_idx[id_]], dense_dists.get(id_, 0.20)) for id_ in top_ids]
