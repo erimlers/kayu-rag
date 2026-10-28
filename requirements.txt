@@ -1,0 +1,19 @@
+# Kayseri Üniversitesi (KAYÜ) Mevzuat Danışmanı - Bağımlılıklar
+# Python 3.10+ önerilir
+
+# PDF Metin Çıkarma ve İşleme
+pymupdf>=1.23.0
+
+# Vektör Gömme (Embedding) ve İndeksleme
+sentence-transformers>=2.2.0
+chromadb>=0.4.0
+
+# LLM Entegrasyonu (Google Gemini API - Resmi Modern SDK)
+google-genai>=0.1.1
+
+# Web Sunucusu ve REST API
+fastapi>=0.100.0
+uvicorn>=0.23.0
+
+# Ortam Değişkenleri Yönetimi
+python-dotenv>=1.0.0

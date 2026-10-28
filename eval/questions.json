@@ -1,0 +1,368 @@
+[
+  {
+    "id": 1,
+    "soru": "Yaz okulunda bir dönemde en fazla kaç ders alınabilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "yaz_okulu.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "En çok dört ders (toplam 20 AKTS veya 12 ders saatini geçmemek üzere)"
+  },
+  {
+    "id": 2,
+    "soru": "Yaz okulunda eğitim öğretim süresi kaç haftadır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yaz_okulu.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "Altı haftadır (izleyen hafta final sınavları yapılır)"
+  },
+  {
+    "id": 3,
+    "soru": "Ön lisans ve lisans programlarında teorik ve uygulamalı derslere devam zorunluluğu yüzde kaçtır?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 6,
+    "dogru_cevap": "Teorik derslere %70, uygulamalı derslere %80 devam zorunludur"
+  },
+  {
+    "id": 4,
+    "soru": "Öğrencinin kaydı bir defada ve öğrenim süresi boyunca toplamda en çok kaç yarıyıl dondurulabilir?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Bir defada en çok iki yarıyıl, toplamda en çok dört yarıyıl dondurulabilir"
+  },
+  {
+    "id": 5,
+    "soru": "Sınav sonucuna itiraz hangi süre içinde nereye yapılır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_egitim_ogretim_sinav.pdf",
+    "beklenen_sayfa": 10,
+    "dogru_cevap": "En geç beş eğitim-öğretim günü içinde ilgili birime dilekçe ile yapılır"
+  },
+  {
+    "id": 6,
+    "soru": "Azami öğrenim süresi sonunda mezun olamayan öğrencilere kaç ek sınav hakkı verilir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "azami_sure_mezun_olamayanlar.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "İki ek sınav hakkı verilir"
+  },
+  {
+    "id": 7,
+    "soru": "Ek sınavlar sonunda tek derse kalan öğrenciye ne kadar süre tanınır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "azami_sure_mezun_olamayanlar.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "Sınırsız sınav hakkı tanınır"
+  },
+  {
+    "id": 8,
+    "soru": "Çift anadal programında izin almadan kaç dönem üst üste ders almayan öğrencinin kaydı silinir?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "İki dönem üst üste ders almayan öğrencinin kaydı silinir"
+  },
+  {
+    "id": 9,
+    "soru": "Çift anadal programına başvuru için anadal diploma programındaki başarı sıralaması şartı nedir?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "İlgili sınıfında başarı sıralaması itibariyle en üst %20'sinde bulunması gerekir"
+  },
+  {
+    "id": 10,
+    "soru": "Mazeret sınavına başvuru mazeretin ortaya çıkmasından itibaren kaç gün içinde yapılmalıdır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "hakli_gecerli_nedenler.pdf",
+    "beklenen_sayfa": 1,
+    "dogru_cevap": "Mazeretin ortaya çıkmasını takip eden beş (5) eğitim-öğretim iş günü içinde yapılmalıdır"
+  },
+  {
+    "id": 11,
+    "soru": "Sağlık mazereti ile bir yarıyıl kayıt dondurabilmek için en az kaç günlük kesintisiz sağlık raporu gerekir?",
+    "kategori": "sayi",
+    "cevapsiz": false,
+    "beklenen_dosya": "hakli_gecerli_nedenler.pdf",
+    "beklenen_sayfa": 4,
+    "dogru_cevap": "En az 30 günlük kesintisiz sağlık raporu gerekir"
+  },
+  {
+    "id": 12,
+    "soru": "Ön lisans ve lisans öğrencilerinin stajlarını hangi dönemde yapması esastır?",
+    "kategori": "tanim",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisans_onlisans_uygulamali_egitimler.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Stajların yarıyıl veya yaz tatiline rastlayan aylarda yapılması esastır"
+  },
+  {
+    "id": 13,
+    "soru": "İşletmede Mesleki Eğitim dersine devam zorunluluğu en az yüzde kaçtır?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 5,
+    "dogru_cevap": "En az %80 devam zorunludur (en fazla %20 devamsızlık yapılabilir)"
+  },
+  {
+    "id": 14,
+    "soru": "Muafiyet ve intibak başvuruları ders kayıt tarihinden itibaren en geç kaç gün içinde yapılmalıdır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "muafiyet_intibak.pdf",
+    "beklenen_sayfa": 2,
+    "dogru_cevap": "En geç ders kayıt tarihinden itibaren 10 (on) gün içinde yapılmalıdır"
+  },
+  {
+    "id": 15,
+    "soru": "Yaklaşık kaç saatlik öğrenci çalışmasının karşılığı 1 AKTS kredisidir?",
+    "kategori": "tanim",
+    "cevapsiz": false,
+    "beklenen_dosya": "akts.pdf",
+    "beklenen_sayfa": 3,
+    "dogru_cevap": "Yaklaşık 30 saatlik öğrenci çalışması 1 AKTS kredisidir"
+  },
+  {
+    "id": 16,
+    "soru": "Tezli yüksek lisans programının asgari ve azami öğrenim süresi kaç yarıyıldır?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "lisansustu_egitim.pdf",
+    "beklenen_sayfa": 8,
+    "dogru_cevap": "Asgari 4 yarıyıl, azami öğrenim süresi 6 yarıyıldır"
+  },
+  {
+    "id": 17,
+    "soru": "Üniversite kütüphanesinden tek seferde en fazla kaç adet kitap ödünç alınabilir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": 18,
+    "soru": "Yemekhane bursu başvurusu için aranan gelir ve başarı kriterleri nelerdir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": 19,
+    "soru": "Üniversite öğrenci yurtlarına başvuru ve kabul şartları nelerdir?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": 20,
+    "soru": "Erasmus+ öğrenci değişim programında yabancı dil baraj puanı kaçtır?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "dogru_cevap": null
+  },
+  {
+    "id": 21,
+    "soru": "işletmede mesleki eğitimde para alabilir miyim?",
+    "kategori": "genel",
+    "cevapsiz": false,
+    "beklenen_dosya": "isletmede_mesleki_egitim.pdf",
+    "beklenen_sayfa": 5,
+    "ek_kabul": [],
+    "dogru_cevap": "Üniversite öğrencilere ücret ödemekle yükümlü değildir; iş yeriyle mali ilişki üniversiteye yükümlülük getirmez (Md.10/6)",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 22,
+    "soru": "başka üniversiteden yatay geçişle geldim ama aldığım dersin burada sayılması için ne lazım?",
+    "kategori": "genel",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "muafiyet_intibak.pdf",
+        "sayfa": 3
+      },
+      {
+        "dosya": "muafiyet_intibak.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "Komisyon, önceki dersleri dikkate alarak intibak ve muaf tutulacak dersleri belirler (YÖK Md.8/3); muafiyette ders içeriği uyumu %75 üzeri olmalı (muafiyet_intibak Md.5/2)",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 23,
+    "soru": "Alttan bir tane ff dersim kalsa yatay geçiş yapamaz mıyım ortalamam tutsa bile?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 2,
+    "ek_kabul": [],
+    "dogru_cevap": "Kurum içi yatay geçişte kayıtlı olduğu programdaki bütün derslerini alıp başarılı olması gerekir (Md.5/2). Soru kurumlar arası geçişi kastediyorsa farklı kaynak gerekebilir",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 24,
+    "soru": "Ek madde 1 ile geçiş yaparken yks puanımın yettiği her yere kesin geçebilir miyim yoksa kontenjan dolarsa elenir miyim?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 12,
+    "ek_kabul": [],
+    "dogru_cevap": "Başvuru kontenjandan fazlaysa ÖSYS puanı en yüksek adaydan başlanarak kontenjan kadar aday kabul edilir (Ek Madde 1)",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 25,
+    "soru": "Başka üniversiteden buraya geçersem önceki derslerimi sayarlar mı yoksa baştan mı aldırırlar?",
+    "kategori": "genel",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "muafiyet_intibak.pdf",
+        "sayfa": 3
+      },
+      {
+        "dosya": "muafiyet_intibak.pdf",
+        "sayfa": 4
+      }
+    ],
+    "dogru_cevap": "Komisyon önceki derslere göre intibak programı ve muaf tutulacak dersleri belirler (YÖK Md.8/3). Soru 22 ile benzer konu",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 26,
+    "soru": "Çap için ortalama sınırı kaç tam olarak, 2. dönemden hemen sonra başvurabiliyor muyuz?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+        "sayfa": 8
+      },
+      {
+        "dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+        "sayfa": 9
+      }
+    ],
+    "dogru_cevap": "Kayseri yönergesi: GANO 4.00 üzerinden en az 3.00 ve ilgili sınıfta ilk %20; lisansta en erken 3. yarıyıl başında başvurulur (Md.9). YÖK yönetmeliği: 100 üzerinden 70",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 27,
+    "soru": "Yandal yaparken ana bölümümdeki ortalamam 2.50'nin altına inerse kaydım siliniyor mu?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+    "beklenen_sayfa": 7,
+    "ek_kabul": [
+      {
+        "dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+        "sayfa": 10
+      }
+    ],
+    "dogru_cevap": "Anadal GANO'su her dönemde 4.00 üzerinden en az 2.50 olmalı, sağlayamayan öğrencinin yan dal kaydı silinir (Md.18/1). YÖK yönetmeliği eşiği 100 üzerinden 60 olarak verir",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 28,
+    "soru": "İkinci öğretimdeyim, gündüze geçmek için illa yüzde ona mı girmem lazım başka yolu yok mu?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 3,
+    "ek_kabul": [
+      {
+        "dosya": "kurum_ici_yatay_gecis_cap_yandal.pdf",
+        "sayfa": 3
+      }
+    ],
+    "dogru_cevap": "İkinci öğretimden birinci öğretime geçiş: bulunduğu sınıfın ilk %10'una girip bir üst sınıfa geçen öğrenciler kontenjan dahilinde geçebilir (YÖK Md.6/3; Kayseri yönergesi Md.5/5)",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 29,
+    "soru": "Geçen sene merkezi puanla yatay geçiş yapmıştım, pişman oldum eski okuluma geri dönebilir miyim?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "ek_kabul": [],
+    "dogru_cevap": null,
+    "not": "Belgelerde yok: YÖK s.4 yalnızca dönem başlamadan geçişten vazgeçenlerin geri dönüşünü düzenler, bir yıl okuduktan sonrasını değil (yakın-konu cevapsız soru)",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 30,
+    "soru": "Çap yaptığım bölüm 4 yılda yetişmezse okul bana bitirmem için ekstra kaç dönem veriyor?",
+    "kategori": "sure",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 9,
+    "ek_kabul": [],
+    "dogru_cevap": "Anadalı bitirip çift anadalı bitiremeyenlerin süresi 2547 sayılı Kanun md.44(c)'deki azami süredir (Md.17/7). Dönem sayısı metinde açıkça verilmiyor, kanuna atıf yapılıyor",
+    "not": "",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 31,
+    "soru": "Özel üniversiteden devlete geçerken ücretli okuduğum için herhangi bir sıkıntı çıkar mı intibakta?",
+    "kategori": "cevapsiz",
+    "cevapsiz": true,
+    "beklenen_dosya": null,
+    "beklenen_sayfa": null,
+    "ek_kabul": [],
+    "dogru_cevap": null,
+    "not": "Belgelerde ücret nedeniyle intibakta sorun olacağına dair hüküm bulunamadı (yakın-konu cevapsız soru)",
+    "yazan": "kullanici"
+  },
+  {
+    "id": 32,
+    "soru": "Kurum içi yatay geçişle bilgisayara geçmek istiyorum ama yks sıralamam o seneki taban sıralamanın altındaydı, yine de başvurabiliyor muyum?",
+    "kategori": "sart",
+    "cevapsiz": false,
+    "beklenen_dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+    "beklenen_sayfa": 4,
+    "ek_kabul": [
+      {
+        "dosya": "yok_yatay_gecis_cap_yandal_yonetmeligi.pdf",
+        "sayfa": 5
+      }
+    ],
+    "dogru_cevap": "Kurum içi geçiş kontenjanları taban puan şartıyla birlikte belirlenir ve başvuranın puanının en düşük taban puanından az olmaması şartı aranır (YÖK Md.9/3-5). Kayseri yönergesi Md.5'te taban puan şartı yok",
+    "not": "",
+    "yazan": "kullanici"
+  }
+]

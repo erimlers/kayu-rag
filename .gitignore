@@ -1,0 +1,24 @@
+# Sanal Ortamlar
+.venv/
+venv/
+env/
+
+# Veritabanı ve Geçici Dosyalar
+db/
+pages.json
+*.db
+*.sqlite3
+
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Gizli Anahtarlar ve Ortam Değişkenleri
+.env
+
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAYÜ Mevzuat Danışmanı | Kayseri Üniversitesi</title>
+  <meta name="description" content="Kayseri Üniversitesi resmi yönetmelik ve senato yönergelerine dayalı kurumsal arama ve mevzuat danışma sistemi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ====================================================================
+       1. ÜST NAVİGASYON (FULL WIDTH NAVBAR)
+       ==================================================================== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">KAYÜ Mevzuat Danışmanı</span>
+          <span class="brand-sub">Kayseri Üniversitesi Senato Yönetmelik ve Yönergeleri</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="docsModalBtn" class="status-btn" title="Taranan 19 resmi belgeyi incele">
+          <span class="status-dot"></span>
+          <span>19 Resmi Belge İndekslendi</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </button>
+        <button id="newChatBtn" class="btn-new-chat" title="Yeni Soru Başlat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Yeni Soru</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       2. ANA ÇALIŞMA ALANI (MERKEZ ODAKLI DENGELİ PORTAL)
+       ==================================================================== -->
+  <div class="app-layout">
+    <main class="main-workspace" id="chatViewport">
+      <div class="content-container">
+
+        <!-- KARŞILAMA VE ÖRNEK KONU KARTLARI (Sade & Dengeli) -->
+        <section class="welcome-section" id="welcomeCard">
+          <div class="welcome-header">
+            <div class="header-badge">RESMİ YÖNETMELİK VE YÖNERGELER</div>
+            <h1 class="welcome-title">Kayseri Üniversitesi Mevzuat Danışmanı</h1>
+            <p class="welcome-desc">
+              Önlisans, lisans, lisansüstü eğitim-öğretim, sınav hakları, yatay geçiş, ÇAP ve yaz okulu esasları taranarak doğrudan resmi maddelerle cevaplanır.
+            </p>
+          </div>
+
+          <!-- 6'lı Dengeli Soru Kartı Izgarası (2x3 Grid) -->
+          <div class="cards-section">
+            <div class="section-title-row">
+              <span class="section-title">Sık Sorulan Mevzuat Konuları</span>
+            </div>
+
+            <div class="cards-grid">
+              <!-- Kart 1: Yatay Geçiş & FF Dersi -->
+              <button class="topic-card" data-query="Alttan bir tane ff dersim kalsa yatay geçiş yapamaz mıyım ortalamam tutsa bile?">
+                <div class="card-icon-wrap">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="17 1 21 5 17 9"/>
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                    <polyline points="7 23 3 19 7 15"/>
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <h3 class="card-title">Yatay Geçişte FF Notu</h3>
+                  <p class="card-desc">Alttan başarısız ders varken GANO yettiğinde geçiş yapılabilir mi?</p>
+                </div>
+              </button>
+
+              <!-- Kart 2: Çift Anadal (ÇAP) -->
+              <button class="topic-card" data-query="ÇAP için genel not ortalaması sınırı kaçtır ve ne zaman başvurulur?">
+                <div class="card-icon-wrap">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <h3 class="card-title">ÇAP Başvuru Koşulları</h3>
+                  <p class="card-desc">Çift anadal için aranan asgari GANO ve başvuru yarıyılı şartları.</p>
+                </div>
+              </button>
+
+              <!-- Kart 3: Sınav Notuna İtiraz -->
+              <button class="topic-card" data-query="Sınav notlarına itiraz süresi kaç gündür ve nereye başvuru yapılır?">
+                <div class="card-icon-wrap">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <h3 class="card-title">Sınav Notuna İtiraz</h3>
+                  <p class="card-desc">Maddi hata itiraz süresi kaç iş günüdür ve nereye dilekçe verilir?</p>
+                </div>
+              </button>
+
+              <!-- Kart 4: Yaz Okulu -->
+              <button class="topic-card" data-query="Yaz okulunda en fazla kaç ders veya AKTS kredilik ders alınabilir?">
+                <div class="card-icon-wrap">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <h3 class="card-title">Yaz Okulu Kredi Sınırı</h3>
+                  <p class="card-desc">Yaz döneminde alınabilecek azami AKTS kredisi ve ders sayısı.</p>
+                </div>
+              </button>
+
+              <!-- Kart 5: Devamsızlık -->
+              <button class="topic-card" data-query="Derslere devam zorunluluğu teorik ve uygulamalı derslerde yüzde kaçtır?">
+                <div class="card-icon-wrap">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="8.5" cy="7.5" r="4"/>
+                    <line x1="20" y1="8" x2="20" y2="14"/>
+                    <line x1="23" y1="11" x2="17" y2="11"/>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <h3 class="card-title">Devamsızlık Oranları</h3>
+                  <p class="card-desc">Teorik ve uygulamalı derslerde zorunlu devam yüzdeleri.</p>
+                </div>
+              </button>
+
+              <!-- Kart 6: Tek Ders Sınavı -->
+              <button class="topic-card" data-query="Tek ders sınavına kimler başvurabilir, şartları nelerdir?">
+                <div class="card-icon-wrap">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+                <div class="card-text">
+                  <h3 class="card-title">Tek Ders Sınavı</h3>
+                  <p class="card-desc">Mezuniyet için tek dersten kalan öğrencilerin başvuru koşulları.</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SOHBET MESAJLARI AKIŞI -->
+        <div class="messages-flow" id="messagesList"></div>
+
+      </div>
+
+      <!-- SABİT ALT GİRİŞ ÇUBUĞU (COMPOSER) -->
+      <footer class="composer-wrapper">
+        <div class="composer-container">
+          <form id="askForm" class="composer-form">
+            <div class="composer-box">
+              <textarea 
+                id="questionInput" 
+                placeholder="Mevzuat hakkında bir soru sorun... (Örn: ÇAP ortalama sınırı kaçtır?)" 
+                rows="1" 
+                required
+              ></textarea>
+              <button type="submit" id="submitBtn" class="btn-send" title="Soruyu Gönder">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M22 2L11 13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </button>
+            </div>
+            <div class="composer-footnote">
+              <span>Enter ile gönder, Shift + Enter ile yeni satıra geç.</span>
+              <span class="footnote-right">19 resmi senato belgesine dayalıdır.</span>
+            </div>
+          </form>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ====================================================================
+       3. TARANAN 19 RESMİ BELGE MODAL PENCERESİ
+       ==================================================================== -->
+  <div class="modal-backdrop" id="docsModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2 class="modal-title">Sistemde İndekslenen 19 Resmi Belge</h2>
+          <span class="modal-sub">Kayseri Üniversitesi Senato Onaylı Mevzuat Listesi</span>
+        </div>
+        <button id="closeModalBtn" class="modal-close-btn" title="Kapat">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="doc-group">
+          <div class="doc-group-title">Yönetmelikler (3 Temel Mevzuat)</div>
+          <div class="doc-list">
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type">YÖNETMELİK</span>
+                <span class="doc-row-name">Ön Lisans ve Lisans Eğitim-Öğretim ve Sınav Yönetmeliği</span>
+              </div>
+              <span class="doc-page-count">12 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type">YÖNETMELİK</span>
+                <span class="doc-row-name">Lisansüstü Eğitim ve Öğretim Yönetmeliği</span>
+              </div>
+              <span class="doc-page-count">24 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type">YÖNETMELİK</span>
+                <span class="doc-row-name">YÖK Kurumlar Arası ve Kurum İçi Yatay Geçiş, ÇAP ve Yandal Yönetmeliği</span>
+              </div>
+              <span class="doc-page-count">13 Sayfa</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-group">
+          <div class="doc-group-title">Senato Yönergeleri ve Usul Esasları (16 Belge)</div>
+          <div class="doc-list">
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Kurum İçi Yatay Geçiş, Çift Anadal (ÇAP) ve Yandal Yönergesi</span>
+              </div>
+              <span class="doc-page-count">8 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Yaz Okulu Yönergesi</span>
+              </div>
+              <span class="doc-page-count">3 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Ön Lisans ve Lisans Sınav ve Başarı Değerlendirme Yönergesi</span>
+              </div>
+              <span class="doc-page-count">9 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Ders Muafiyeti ve İntibak İşlemleri Yönergesi</span>
+              </div>
+              <span class="doc-page-count">4 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Öğrenci Haklı ve Geçerli Nedenler Yönergesi (Mazeret Esasları)</span>
+              </div>
+              <span class="doc-page-count">4 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Azami Öğrenim Süresi Sonunda Mezun Olamayanlar Yönergesi</span>
+              </div>
+              <span class="doc-page-count">6 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">İşletmede Mesleki Eğitim Yönergesi</span>
+              </div>
+              <span class="doc-page-count">7 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Ön Lisans ve Lisans Düzeyinde Uygulamalı Eğitimler Yönergesi</span>
+              </div>
+              <span class="doc-page-count">10 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">AKTS Kredilendirme Yönergesi</span>
+              </div>
+              <span class="doc-page-count">4 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Bologna Süreci Uyum Yönergesi</span>
+              </div>
+              <span class="doc-page-count">3 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Özel Öğrenci Yönergesi</span>
+              </div>
+              <span class="doc-page-count">4 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Yabancı Uyruklu Öğrenci Başvuru ve Kayıt Yönergesi</span>
+              </div>
+              <span class="doc-page-count">7 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Mikro Yeterlilik Yönergesi</span>
+              </div>
+              <span class="doc-page-count">5 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Yabancı Dil Muafiyet Sınavları Yönergesi</span>
+              </div>
+              <span class="doc-page-count">5 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Önceki Öğrenmelerin Tanınması Yönergesi</span>
+              </div>
+              <span class="doc-page-count">3 Sayfa</span>
+            </div>
+            <div class="doc-row">
+              <div class="doc-row-left">
+                <span class="doc-badge-type yonerge">YÖNERGE</span>
+                <span class="doc-row-name">Üniversite Seçmeli Dersler Yönergesi</span>
+              </div>
+              <span class="doc-page-count">3 Sayfa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
