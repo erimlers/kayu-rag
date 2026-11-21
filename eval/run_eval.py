@@ -50,6 +50,7 @@ def evaluate_dataset(
     questions_path: str = "eval/dev.json",
     k: int = 4,
     use_rewrite: bool = True,
+    use_reranker: bool = True,
     run_e2e: bool = False,
     quiet_items: bool = False,
 ) -> dict:
@@ -64,14 +65,16 @@ def evaluate_dataset(
 
     # E2E judge lists
     e2e_correct, e2e_partial, e2e_false_abstain, e2e_wrong_confident = [], [], [], []
+    e2e_faithful, e2e_citation_valid = [], []
     unans_correct_abstain = []
+    api_error_count = 0
 
     if run_e2e:
         from src.generate import generate_answer
         from eval.judge import judge_answer
 
     print(f"\n{'=' * 78}")
-    print(f"DEĞERLENDİRME SETİ: {questions_path} (k={k}, rewrite={use_rewrite}, e2e={run_e2e})")
+    print(f"DEĞERLENDİRME SETİ: {questions_path} (k={k}, rewrite={use_rewrite}, rerank={use_reranker}, e2e={run_e2e})")
     print(f"{'=' * 78}")
 
     if use_rewrite:
@@ -91,7 +94,7 @@ def evaluate_dataset(
             (a["dosya"], a["sayfa"]) for a in (q.get("ek_kabul") or [])
         ]
 
-        results = search(soru, k=max(k, 6), use_rewrite=use_rewrite)
+        results = search(soru, k=max(k, 6), use_rewrite=use_rewrite, use_reranker=use_reranker)
         top1_dist = results[0][2] if results else 1.0
 
         if cevapsiz:
@@ -133,11 +136,18 @@ def evaluate_dataset(
         def _run_one_e2e(task_tuple):
             s_q, exp_a, is_unans, pre_res = task_tuple
             gen = generate_answer(s_q, k=6, use_rewrite=use_rewrite, precomputed_results=pre_res)
+            if gen["answer"].startswith("API çağrısı sırasında bir hata oluştu"):
+                return is_unans, {"api_error": True}, False
             jres = judge_answer(s_q, exp_a, gen["answer"], is_unanswerable=is_unans)
-            return is_unans, jres
+            audit = gen.get("citation_audit", {})
+            cit_valid = len(audit.get("unverified", [])) == 0
+            return is_unans, jres, cit_valid
 
-        with ThreadPoolExecutor(max_workers=3) as pool:
-            for is_unans, jres in pool.map(_run_one_e2e, e2e_tasks):
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            for is_unans, jres, cit_valid in pool.map(_run_one_e2e, e2e_tasks):
+                if jres.get("api_error"):
+                    api_error_count += 1
+                    continue
                 if is_unans:
                     unans_correct_abstain.append(1.0 if jres["abstained"] else 0.0)
                 else:
@@ -145,6 +155,8 @@ def evaluate_dataset(
                     e2e_partial.append(1.0 if jres["verdict"] in ("dogru", "kismen") else 0.0)
                     e2e_false_abstain.append(1.0 if jres["abstained"] else 0.0)
                     e2e_wrong_confident.append(1.0 if jres["wrong_confident"] else 0.0)
+                    e2e_faithful.append(1.0 if jres.get("faithful", True) else 0.0)
+                    e2e_citation_valid.append(1.0 if cit_valid else 0.0)
 
     ans_count = len(hit1_list)
     metrics = {"dataset": questions_path, "ans_count": ans_count, "unans_count": len(unans_distances)}
@@ -172,11 +184,14 @@ def evaluate_dataset(
         print(f"  • Hit@5 : %{h5_mean:.1f} ({int(sum(hit5_list))}/{ans_count})")
         print(f"  • MRR   : {mrr_mean:.3f} [%95 GA: {mrr_ci[0]:.3f} - {mrr_ci[1]:.3f}]")
 
-    if run_e2e and ans_count > 0:
-        c_rate = sum(e2e_correct) / ans_count * 100
-        p_rate = sum(e2e_partial) / ans_count * 100
-        fa_rate = sum(e2e_false_abstain) / ans_count * 100
-        wc_rate = sum(e2e_wrong_confident) / ans_count * 100
+    if run_e2e and e2e_correct:
+        e2e_n = len(e2e_correct)
+        c_rate = sum(e2e_correct) / e2e_n * 100
+        p_rate = sum(e2e_partial) / e2e_n * 100
+        fa_rate = sum(e2e_false_abstain) / e2e_n * 100
+        wc_rate = sum(e2e_wrong_confident) / e2e_n * 100
+        f_rate = sum(e2e_faithful) / e2e_n * 100
+        cv_rate = sum(e2e_citation_valid) / e2e_n * 100
         p_ci = tuple(x * 100 for x in bootstrap_ci(e2e_partial))
         metrics.update({
             "e2e_correct": c_rate,
@@ -184,12 +199,17 @@ def evaluate_dataset(
             "e2e_useful_ci": p_ci,
             "false_abstain": fa_rate,
             "wrong_confident": wc_rate,
+            "faithful": f_rate,
+            "citation_valid": cv_rate,
+            "api_errors": api_error_count,
         })
-        print(f"UÇTAN UCA (LLM HAKEM) METRİKLERİ (n={ans_count}):")
-        print(f"  • Tam Doğru Cevap       : %{c_rate:.1f} ({int(sum(e2e_correct))}/{ans_count})")
-        print(f"  • Doğru + Kısmen Doğru  : %{p_rate:.1f} ({int(sum(e2e_partial))}/{ans_count}) [%95 GA: %{p_ci[0]:.1f} - %{p_ci[1]:.1f}]")
-        print(f"  • Gereksiz Abstention   : %{fa_rate:.1f} ({int(sum(e2e_false_abstain))}/{ans_count})")
-        print(f"  • Yanlış-Güvenli Cevap  : %{wc_rate:.1f} ({int(sum(e2e_wrong_confident))}/{ans_count})")
+        print(f"UÇTAN UCA (LLM HAKEM) METRİKLERİ (n={e2e_n}, api_hata={api_error_count}):")
+        print(f"  • Tam Doğru Cevap       : %{c_rate:.1f} ({int(sum(e2e_correct))}/{e2e_n})")
+        print(f"  • Doğru + Kısmen Doğru  : %{p_rate:.1f} ({int(sum(e2e_partial))}/{e2e_n}) [%95 GA: %{p_ci[0]:.1f} - %{p_ci[1]:.1f}]")
+        print(f"  • Bağlama Sadakat       : %{f_rate:.1f} ({int(sum(e2e_faithful))}/{e2e_n})")
+        print(f"  • Geçerli Atıf Oranı    : %{cv_rate:.1f} ({int(sum(e2e_citation_valid))}/{e2e_n})")
+        print(f"  • Gereksiz Abstention   : %{fa_rate:.1f} ({int(sum(e2e_false_abstain))}/{e2e_n})")
+        print(f"  • Yanlış-Güvenli Cevap  : %{wc_rate:.1f} ({int(sum(e2e_wrong_confident))}/{e2e_n})")
 
     if run_e2e and unans_correct_abstain:
         ua_count = len(unans_correct_abstain)
@@ -209,18 +229,21 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", default="eval/dev.json")
     parser.add_argument("--k", type=int, default=4)
     parser.add_argument("--no-rewrite", action="store_true")
+    parser.add_argument("--no-rerank", action="store_true")
     parser.add_argument("--e2e", action="store_true")
     parser.add_argument("--quiet", action="store_true")
+    parser.add_argument("--no-log", action="store_true")
     args = parser.parse_args()
 
     m = evaluate_dataset(
         questions_path=args.dataset,
         k=args.k,
         use_rewrite=not args.no_rewrite,
+        use_reranker=not args.no_rerank,
         run_e2e=args.e2e,
         quiet_items=args.quiet,
     )
-    if m.get("ans_count", 0) > 0:
+    if m.get("ans_count", 0) > 0 and not args.no_log:
         commit = get_git_commit()
         with open("eval/sonuclar.md", "a", encoding="utf-8") as f:
             f.write(

@@ -2,12 +2,27 @@ import json
 import os
 import pathlib
 import threading
+import yaml
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
 CACHE_PATH = pathlib.Path("db/rewrite_cache.json")
-REWRITE_MODEL = "gemini-3.5-flash-lite"
+CONFIG_PATH = pathlib.Path(__file__).resolve().parent.parent / "config" / "retrieval.yaml"
+
+def _load_rewrite_cfg() -> tuple[str, int]:
+    model, max_q = "gemini-3.5-flash-lite", 2
+    if CONFIG_PATH.exists():
+        try:
+            cfg = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8")) or {}
+            rw_cfg = cfg.get("query_rewrite", {}) or {}
+            model = rw_cfg.get("model", model)
+            max_q = int(rw_cfg.get("max_rewritten_queries", max_q))
+        except Exception:
+            pass
+    return model, max_q
+
+REWRITE_MODEL, MAX_REWRITTEN_QUERIES = _load_rewrite_cfg()
 _LOCK = threading.RLock()
 _MEM_CACHE = None
 
@@ -100,7 +115,7 @@ def rewrite_query(query: str, use_llm: bool = True) -> dict:
         level = data.get("program_level", "genel")
         if level not in ("onlisans_lisans", "lisansustu", "genel"):
             level = "genel"
-        rq = [str(x).strip() for x in data.get("rewritten_queries", []) if str(x).strip()][:2]
+        rq = [str(x).strip() for x in data.get("rewritten_queries", []) if str(x).strip()][:MAX_REWRITTEN_QUERIES]
         result = {"program_level": level, "rewritten_queries": rq}
         _save_cache_entry(q_clean, result)
         return result

@@ -47,15 +47,15 @@ Sistem, Kayseri Üniversitesi Senatosu tarafından yayımlanan güncel 19 resmi 
 
 Bu projede harici büyük çerçeveler (LangChain, LlamaIndex vb.) yerine temel arama ve birleştirme adımları saf Python ile kurgulanmıştır:
 
-- **Belge ve Madde Başlıklı Parçalama (Enriched Chunking):** Her metin parçasının başına ait olduğu yönergenin/yönetmeliğin resmi adı ve sayfadaki madde başlıkları (`[Belge Adı | Konu (MADDE X)]`) otomatik olarak eklenir.
+- **Üst Bilgi Temizliği ve Madde-Duyarlı Parçalama (Article-Aware Chunking):** Yönerge PDF'lerinin her sayfasında tekrarlayan kalite-yönetim üst bilgi tabloları temizlenir; metin `MADDE` sınırlarına göre parçalanır ve her parçanın başına yalnızca kendi ait olduğu `[Belge Adı | Madde Başlığı]` etiketi eklenir.
 - **Türkçe Kök/ASCII Destekli BM25 + Vektör Hibrit Arama:** Yazım hatalarına, Türkçe karakter eksikliklerine ve çekim eklerine dayanıklı morfolojik BM25 indekslemesi ile semantik yoğun vektör araması (`multilingual-e5-base`) birlikte çalıştırılır.
 - **LLM Sorgu Yeniden Yazımı (`src/query_rewrite.py`):** Öğrencilerin yazdığı tek kelimelik, devrik veya yarım bırakılmış ifadeler (*"muafiyeti geçemezsem", "ff alırsam", "tek ders"*) kural uydurmadan resmi mevzuat terminolojisine dönüştürülür ve öğrenim düzeyi (ön lisans/lisans vs. lisansüstü) tespit edilir.
-- **RRF Sıralaması ve Sayfa Tekilleştirme:** Sonuçlar Reciprocal Rank Fusion (RRF, k=30) ile birleştirilir ve aynı sayfadan gelen parçalar tekilleştirilerek en alakalı sayfalar seçilir.
-- **Kapsam Ayrımlı Yanıt ve Abstention Kontrolü:** LLM motoru farklı yönergeleri (ör. önceki öğrenmelerin tanınması ile muafiyet sınavları) birbirine karıştırmadan sayfa atfıyla (`[belge.pdf, s.X]`) yanıt üretir; kısmi bilgi varsa açıklar, yalnızca tamamen kapsam dışı konularda çekimser (abstention) kalır.
+- **RRF + 2. Aşama Cross-Encoder Reranker:** Aday havuzu Reciprocal Rank Fusion (RRF, k=30) ile birleştirildikten sonra çok dilli Cross-Encoder (`cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`) ile yeniden sıralanır ve sayfa bazında tekilleştirilir.
+- **Atıf Doğrulama ve Kapsam Ayrımlı Yanıt:** LLM motoru farklı yönergeleri ve KAYÜ/YÖK hiyerarşisini birbirine karıştırmadan sayfa atfıyla (`[belge.pdf, s.X]`) yanıt üretir; çoklu sayfa ve aralık atıfları (`s. 9, 17`, `s. 4-5`) bağlama karşı doğrulanır (`citation_audit`).
 
 ```mermaid
 flowchart TD
-    A[Öğrenci Sorusu] --> B[Sorgu Genişletme]
+    A[Öğrenci Sorusu] --> B[Sorgu Yeniden Yazma]
     
     B --> C[BM25 Leksikal Arama]
     A --> D[Dense Vektör Arama]
@@ -63,12 +63,13 @@ flowchart TD
     C --> E[RRF Birleştirme k=30]
     D --> E
     
-    E --> F[İlk 6 İlgili Parça]
-    F --> G[Google Gemini LLM]
+    E --> F[Cross-Encoder Reranker]
+    F --> G[İlk 6 İlgili Sayfa]
+    G --> H[Google Gemini LLM]
     
-    G --> H[Sayfa Atıflı Cevap]
-    H --> I[Kullanılan Kaynak Filtresi]
-    I --> J[Web Portalı Arayüzü]
+    H --> I[Sayfa Atıflı Cevap]
+    I --> J[Atıf Doğrulama ve Kaynak Filtresi]
+    J --> K[Web Portalı Arayüzü]
 ```
 
 ---
@@ -81,13 +82,13 @@ Değerlendirme sürecinde veri sızıntısını (overfit) önlemek için eski ge
 2. **Kısa / Gürültülü Stres Seti (`eval/noisy.json`, 60 soru):** Tek kelime, yarım cümle, yazım hatalı ve günlük öğrenci argosu (*"ff alırsam", "muafiyeti geçemezsem", "staj sigortası kim ödüyo"* vb.).
 3. **Cevapsız Set (`eval/unanswerable.json`, 30 soru):** 15 tamamen kapsam dışı + 15 mevzuata yakın görünüp belgelerde cevabı olmayan soru.
 
-| Veri Seti | Soru Sayısı | Hit@1 (%95 GA) | Hit@3 (%95 GA) | Hit@5 | MRR | Uçtan Uca Doğru+Kısmen (LLM Hakem) | Gereksiz "Bilgi Yok" (False Abstention) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Kilitli Test Seti** (`test_locked.json`) | 80 | **%80.0** (%71.2–%88.8) | **%95.0** (%90.0–%98.8) | **%98.8** | **0.875** | **%88.8** (%81.2–%95.0) | **%0.0** (0/80) |
-| **Kısa / Gürültülü Set** (`noisy.json`) | 60 | **%61.7** (%50.0–%73.3) | **%88.3** (%80.0–%95.0) | **%95.0** | **0.740** | **%96.7** (%91.7–%100.0) | **%0.0** (0/60) |
-| **Geliştirme Seti** (`dev.json`) | 40 | **%65.0** (%50.0–%80.0) | **%95.0** (%87.5–%100.0) | **%97.5** | **0.769** | - | - |
+| Veri Seti | Soru | Hit@1 (%95 GA) | Hit@3 (%95 GA) | Hit@5 | MRR | Uçtan Uca Doğru+Kısmen | Geçerli Atıf | Gereksiz Abstention |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Kilitli Test Seti** (`test_locked.json`) | 80 | **%96.2** (%92.5–%100.0) | **%100.0** (%100.0–%100.0) | **%100.0** | **0.981** | **%100.0** (Tam Doğru %97.3) | **%98.7** | **%0.0** |
+| **Kısa / Gürültülü Set** (`noisy.json`) | 60 | **%76.7** (%65.0–%86.7) | **%90.0** (%81.7–%96.7) | **%93.3** | **0.832** | **%94.6** | **%94.6** | **%0.0** |
+| **Geliştirme Seti** (`dev.json`) | 40 | **%62.5** (%47.5–%77.5) | **%92.5** (%82.5–%100.0) | **%97.5** | **0.760** | **%83.3** | **%97.2** | **%2.8** |
 
-- **Kapsam Dışı / Cevapsız Sorularda Doğru Çekimserlik (`unanswerable.json`, 30 soru):** **%86.7** (%95 GA: %73.3–%96.7).
+- **Kapsam Dışı / Cevapsız Sorularda Doğru Çekimserlik (`unanswerable.json`, 30 soru):** **%93.3 (28/30)** (%95 GA: %83.3–%100.0); `dev.json` cevapsız alt setinde **%100.0 (10/10)**.
 - **Sınırlılıklar:** 80 soruluk test seti orta ölçekli bir akademik benchmark olup %95 bootstrap güven aralıkları tabloda açıkça paylaşılmıştır. Sistem yalnızca 19 PDF'te yer alan genel senato mevzuatını kapsar; bölüm bazlı müfredat/dil bilgisi veya güncel idari duyurular kapsam dışıdır.
 
 *Ayrıntılı deney kayıtları ve ablation sonuçları [eval/sonuclar.md](eval/sonuclar.md) dosyasında yer almaktadır.*

@@ -15,5 +15,6 @@ google-genai>=0.1.1
 fastapi>=0.100.0
 uvicorn>=0.23.0
 
-# Ortam Değişkenleri Yönetimi
+# Ortam Değişkenleri ve Yapılandırma Yönetimi
 python-dotenv>=1.0.0
+pyyaml>=6.0
