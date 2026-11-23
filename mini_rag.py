@@ -98,8 +98,22 @@ def get_model():
     global _model
     with _model_lock:
         if _model is None:
-            _model = SentenceTransformer(MODEL)
+            try:
+                _model = SentenceTransformer(MODEL, local_files_only=True)
+            except Exception:
+                _model = SentenceTransformer(MODEL)
         return _model
+
+
+def warmup():
+    """Sunucu açılışında embedding/reranker modellerini, BM25 indeksini ve cihaz (MPS/CPU) boru hattını ısıtır."""
+    get_model()
+    get_bm25()
+    encode_texts(["query: test"])
+    reranker = get_reranker()
+    if reranker is not None:
+        with _reranker_lock:
+            reranker.predict([("test", "test belgesi")])
 
 
 def get_reranker():
@@ -111,7 +125,10 @@ def get_reranker():
         if _reranker is None and not _reranker_failed:
             try:
                 from sentence_transformers import CrossEncoder
-                _reranker = CrossEncoder(rerank_cfg["model"])
+                try:
+                    _reranker = CrossEncoder(rerank_cfg["model"], local_files_only=True)
+                except Exception:
+                    _reranker = CrossEncoder(rerank_cfg["model"])
             except Exception as e:
                 print(f"[Uyarı] Reranker yüklenemedi, RRF ile devam ediliyor: {e}", file=sys.stderr)
                 _reranker_failed = True
@@ -413,6 +430,7 @@ def search(q, k=4, use_rewrite=True, use_reranker=None):
     metas = corpus_data["metadatas"]
     ids = corpus_data["ids"]
     id_to_idx = {id_: i for i, id_ in enumerate(ids)}
+    n_res = min(30, len(ids))
 
     rrf_cfg = CFG.get("rrf", {})
     rrf_k = int(rrf_cfg.get("k", 30))
@@ -422,11 +440,30 @@ def search(q, k=4, use_rewrite=True, use_reranker=None):
     non_grad_w = float(rrf_cfg.get("non_grad_doc_weight", 0.85))
     grad_boost = float(rrf_cfg.get("grad_doc_boost", 1.25))
 
+    # 1. Orijinal sorgu için hızlı yerel dense + BM25 araması
+    orig_emb = encode_texts(["query: " + q])
+    orig_r = get_col().query(query_embeddings=orig_emb, n_results=n_res)
+    orig_dists = orig_r["distances"][0] if orig_r.get("distances") else []
+    top_dist = orig_dists[0] if orig_dists else 1.0
+    is_short = len(q.split()) <= 6
+
+    # 2. Akıllı / koşullu sorgu yeniden yazımı
     program_level = "genel"
     extra_queries = []
     try:
-        from src.query_rewrite import rewrite_query, fallback_rewrite
-        rw = rewrite_query(q, use_llm=use_rewrite) if use_rewrite else fallback_rewrite(q)
+        from src.query_rewrite import rewrite_query, fallback_rewrite, get_cached_rewrite
+
+        if use_rewrite:
+            cached = get_cached_rewrite(q)
+            if cached is not None:
+                rw = cached
+            elif len(q.split()) <= 8 or top_dist > 0.125:
+                rw = rewrite_query(q, use_llm=True)
+            else:
+                rw = fallback_rewrite(q)
+        else:
+            rw = fallback_rewrite(q)
+
         program_level = rw.get("program_level", "genel")
         extra_queries = rw.get("rewritten_queries", [])
     except Exception:
@@ -440,31 +477,41 @@ def search(q, k=4, use_rewrite=True, use_reranker=None):
     )
     is_grad = program_level == "lisansustu" or any(t in grad_check_text for t in grad_terms)
 
-    queries = [q]
+    clean_extras = []
     for eq in extra_queries:
-        if eq and eq.strip() and eq.strip() not in queries:
-            queries.append(eq.strip())
-
-    is_short = len(q.split()) <= 6
-    q_embs = encode_texts(["query: " + x for x in queries])
-    r = get_col().query(query_embeddings=q_embs, n_results=min(30, len(ids)))
+        eq_s = eq.strip() if eq else ""
+        if eq_s and eq_s != q and eq_s not in clean_extras:
+            clean_extras.append(eq_s)
 
     rrf = Counter()
     best_dist = {}
 
-    for q_idx, q_text in enumerate(queries):
-        weight = w_orig if q_idx == 0 else (w_short if is_short else w_long)
-        dense_ids = r["ids"][q_idx]
-        dists = r["distances"][q_idx]
-        for rank, (id_, dist) in enumerate(zip(dense_ids, dists), 1):
-            rrf[id_] += weight * (1.0 / (rrf_k + rank))
-            if id_ not in best_dist or dist < best_dist[id_]:
-                best_dist[id_] = dist
+    # Orijinal sorgu sonuçlarını RRF'e ekle
+    for rank, (id_, dist) in enumerate(zip(orig_r["ids"][0], orig_dists), 1):
+        rrf[id_] += w_orig * (1.0 / (rrf_k + rank))
+        if id_ not in best_dist or dist < best_dist[id_]:
+            best_dist[id_] = dist
 
-        bm25_q = normalize_terms(q_text)
-        bm25_res = bm25.search(bm25_q, top_n=min(30, len(ids)))
-        for rank, (_, idx) in enumerate(bm25_res, 1):
-            rrf[ids[idx]] += weight * (1.0 / (rrf_k + rank))
+    bm25_q0 = normalize_terms(q)
+    for rank, (_, idx) in enumerate(bm25.search(bm25_q0, top_n=n_res), 1):
+        rrf[ids[idx]] += w_orig * (1.0 / (rrf_k + rank))
+
+    # Yalnızca yeni rewrite sorguları varsa onları encode et ve ekle
+    if clean_extras:
+        extra_weight = w_short if is_short else w_long
+        extra_embs = encode_texts(["query: " + x for x in clean_extras])
+        extra_r = get_col().query(query_embeddings=extra_embs, n_results=n_res)
+        for q_idx, q_text in enumerate(clean_extras):
+            dense_ids = extra_r["ids"][q_idx]
+            dists = extra_r["distances"][q_idx]
+            for rank, (id_, dist) in enumerate(zip(dense_ids, dists), 1):
+                rrf[id_] += extra_weight * (1.0 / (rrf_k + rank))
+                if id_ not in best_dist or dist < best_dist[id_]:
+                    best_dist[id_] = dist
+
+            bm25_q = normalize_terms(q_text)
+            for rank, (_, idx) in enumerate(bm25.search(bm25_q, top_n=n_res), 1):
+                rrf[ids[idx]] += extra_weight * (1.0 / (rrf_k + rank))
 
     for id_ in list(rrf.keys()):
         fname = metas[id_to_idx[id_]].get("file", "")

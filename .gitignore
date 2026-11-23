@@ -22,3 +22,13 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
+# Kurumsal Logo (GitHub'a yüklenmez)
+*logo*.jpeg
+*logo*.jpg
+*logo*.png
+
+# Kurumsal Logo (GitHub'a yüklenmez)
+*logo*.jpeg
+*logo*.jpg
+*logo*.png

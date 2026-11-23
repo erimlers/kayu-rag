@@ -2,6 +2,7 @@ import json
 import os
 import pathlib
 import threading
+from concurrent.futures import ThreadPoolExecutor
 import yaml
 from dotenv import load_dotenv
 
@@ -11,7 +12,7 @@ CACHE_PATH = pathlib.Path("db/rewrite_cache.json")
 CONFIG_PATH = pathlib.Path(__file__).resolve().parent.parent / "config" / "retrieval.yaml"
 
 def _load_rewrite_cfg() -> tuple[str, int]:
-    model, max_q = "gemini-3.5-flash-lite", 2
+    model, max_q = "gemini-3.1-flash-lite", 2
     if CONFIG_PATH.exists():
         try:
             cfg = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8")) or {}
@@ -23,8 +24,37 @@ def _load_rewrite_cfg() -> tuple[str, int]:
     return model, max_q
 
 REWRITE_MODEL, MAX_REWRITTEN_QUERIES = _load_rewrite_cfg()
+REWRITE_MODELS = list(dict.fromkeys([
+    REWRITE_MODEL,
+    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash-lite",
+    "gemini-flash-lite-latest",
+]))
 _LOCK = threading.RLock()
 _MEM_CACHE = None
+_CLIENT = None
+_CLIENT_LOCK = threading.Lock()
+_REWRITE_EXECUTOR = ThreadPoolExecutor(max_workers=4)
+
+
+def _get_client():
+    global _CLIENT
+    api_key = os.getenv("GEMINI_API_KEY", "").strip()
+    if not api_key or "your_gemini_api_key" in api_key:
+        return None
+    with _CLIENT_LOCK:
+        if _CLIENT is None:
+            from google import genai
+            _CLIENT = genai.Client(api_key=api_key, http_options={"timeout": 10000})
+        return _CLIENT
+
+
+def get_cached_rewrite(query: str) -> dict | None:
+    q_clean = query.strip()
+    if not q_clean:
+        return None
+    cache = _load_cache()
+    return cache.get(q_clean)
 
 REWRITE_SYSTEM_PROMPT = """Sen bir üniversite mevzuat arama motoru için Sorgu Yeniden Yazma (Query Rewriting) modülüsün.
 Görevin: Öğrencinin yazdığı kısa, devrik, yazım hatalı veya günlük konuşma dilindeki ifadeyi, üniversite yönetmelik ve yönergelerinde geçen resmi mevzuat terminolojisine dönüştürmektir.
@@ -92,25 +122,33 @@ def rewrite_query(query: str, use_llm: bool = True) -> dict:
     if q_clean in cache:
         return cache[q_clean]
 
-    api_key = os.getenv("GEMINI_API_KEY", "").strip()
-    if not api_key or "your_gemini_api_key" in api_key:
+    client = _get_client()
+    if client is None:
         return fallback_rewrite(q_clean)
 
     try:
-        from google import genai
         from google.genai import types
 
-        client = genai.Client(api_key=api_key, http_options={"timeout": 15000})
-        resp = client.models.generate_content(
-            model=REWRITE_MODEL,
-            contents=f"Öğrenci sorgusu: {q_clean}",
-            config=types.GenerateContentConfig(
-                system_instruction=REWRITE_SYSTEM_PROMPT,
-                temperature=0.0,
-                max_output_tokens=200,
-                response_mime_type="application/json",
-            ),
-        )
+        def _call():
+            last_err = None
+            for mdl in REWRITE_MODELS:
+                try:
+                    return client.models.generate_content(
+                        model=mdl,
+                        contents=f"Öğrenci sorgusu: {q_clean}",
+                        config=types.GenerateContentConfig(
+                            system_instruction=REWRITE_SYSTEM_PROMPT,
+                            temperature=0.0,
+                            max_output_tokens=200,
+                            response_mime_type="application/json",
+                        ),
+                    )
+                except Exception as exc:
+                    last_err = exc
+                    continue
+            raise last_err or RuntimeError("Rewrite failed")
+
+        resp = _REWRITE_EXECUTOR.submit(_call).result(timeout=2.5)
         data = json.loads(resp.text.strip())
         level = data.get("program_level", "genel")
         if level not in ("onlisans_lisans", "lisansustu", "genel"):
