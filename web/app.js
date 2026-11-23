@@ -332,14 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const decoder = new TextDecoder("utf-8");
       let buffer = "";
 
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const parts = buffer.split("\n\n");
-        buffer = parts.pop() || "";
-
+      const processSseBlocks = (parts) => {
         for (const part of parts) {
           const line = part.split("\n").find((l) => l.startsWith("data:"));
           if (!line) continue;
@@ -386,6 +379,21 @@ document.addEventListener("DOMContentLoaded", () => {
             botTurn.showError(evt.message || "Yanıt alınırken bir hata oluştu.", query);
           }
         }
+      };
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const parts = buffer.split("\n\n");
+        buffer = parts.pop() || "";
+        processSseBlocks(parts);
+      }
+
+      buffer += decoder.decode();
+      if (buffer.trim()) {
+        processSseBlocks(buffer.split("\n\n"));
       }
 
       if (!finished && streamedRawText) {

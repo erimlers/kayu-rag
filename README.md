@@ -1,5 +1,12 @@
 # KAYÜ Mevzuat Asistanı
 
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com/)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector_Store-orange.svg)](https://www.trychroma.com/)
+[![Sentence-Transformers](https://img.shields.io/badge/Sentence--Transformers-E5_%2B_Cross--Encoder-yellow.svg)](https://www.sbert.net/)
+[![Gemini API](https://img.shields.io/badge/Google_Gemini-API-8E75B2.svg)](https://ai.google.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
+
 Kayseri Üniversitesi (KAYÜ) Senatosu tarafından yayımlanan 19 resmi yönetmelik ve yönerge üzerinde çalışan; madde-duyarlı parçalama, hibrit arama (BM25 + Vektör), Cross-Encoder yeniden sıralama ve Google Gemini SSE akışı ile kaynak atıflı yanıt üreten mevzuat danışmanı.
 
 > **Not:** Bu proje akademik/öğrenci amaçlı bir prototiptir. Yalnızca indekslenen 19 resmi PDF belgesini referans alır ve resmi bağlayıcılığı yoktur; resmi işlemlerde Kayseri Üniversitesi Öğrenci İşleri Daire Başkanlığı ve ilgili birimlerin kararları esastır.

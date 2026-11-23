@@ -50,7 +50,7 @@ def _build_gen_config(thinking_level: str | None):
     cfg_kw = {
         "system_instruction": SYSTEM_PROMPT,
         "temperature": 0.1,
-        "max_output_tokens": 1024,
+        "max_output_tokens": 3072,
     }
     if thinking_level is not None:
         cfg_kw["thinking_config"] = types.ThinkingConfig(thinking_level=thinking_level)
@@ -409,7 +409,7 @@ def generate_answer_stream(question: str, k: int = 6, use_rewrite: bool = True):
         elif winner is None:
             wait_s = 7.0
         else:
-            wait_s = 7.0
+            wait_s = 14.0
 
         try:
             kind, mdl, payload = out_q.get(timeout=wait_s)
@@ -488,7 +488,7 @@ def generate_answer_stream(question: str, k: int = 6, use_rewrite: bool = True):
                         config=_build_gen_config(tl),
                     )
 
-                resp = _RECOVERY_EXECUTOR.submit(_recover).result(timeout=8.0)
+                resp = _RECOVERY_EXECUTOR.submit(_recover).result(timeout=12.0)
                 if resp.text and resp.text.strip():
                     yield {"type": "reset", "message": "Yanıt tamamlanıyor..."}
                     ans = clean_abstention_contradiction(resp.text)
